@@ -1,0 +1,17 @@
+div{
+    padding: 10px;
+    margin: 50px;
+    background-color: rgb(190, 189, 189);
+    width: 100px;
+    height: 100px;
+    text-align: center
+}
+
+.cart{
+    width: 150px;
+    height: 150px;
+    background-color: rgb(190, 189, 189);
+    position: absolute;
+    right: 0px;
+    margin-top: 0px;
+}
