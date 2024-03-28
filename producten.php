@@ -1,18 +1,31 @@
 <?php
 session_start();
+
 include("database.php");
 
-$sql ="SELECT * FROM producten";
-$result = mysqli_query($conn,$sql);
+if(isset($_POST)){
+    if(isset($_SESSION['cart'])){
 
-$procductArray = array();
+        $sessionArray_id = array_column($_SESSION['cart'],"id");
+        if(!in_array($_GET['id'],$sessionArray_id)){
+            $sessionArray = array(
+                'id' => $_GET['id'],
+                "name" => $_POST['name'],
+                "ean" => $_POST['ean']
+            );
+            $_SESSION['cart'][] = $sessionArray;
+        }
 
-
-if(mysqli_num_rows($result) > 0){
-    while($row = mysqli_fetch_assoc($result)){
-        array_push($procductArray,$row['name']);
+    }else{
+        $sessionArray = array(
+            'id' => $_GET['id'],
+            "name" => $_POST['name'],
+            "ean" => $_POST['ean']
+        );
+        $_SESSION['cart'][] = $sessionArray;
     }
 }
+
 ?>
 
 
@@ -25,53 +38,64 @@ if(mysqli_num_rows($result) > 0){
     <link rel="stylesheet" href="producten.css">
 </head>
 <body>
-    <div class="cart">
-    <form action="producten.php" method="post">
-    <input type="submit" value="go to shoping cart">
+    <?php 
+    $sql ="SELECT * FROM producten";
+    $result = mysqli_query($conn,$sql);
+    while($row = mysqli_fetch_assoc($result)){
+      ?>
+    <div>
+    <form action="producten.php?id=<?= $row['id'] ?>" method="post">
+    <p><?= $row['name'] ?></p>
+    <p><?= $row['ean'] ?></p>
+    <input type="hidden" name="name" value="<?= $row['name']?>">
+    <input type="hidden" name="ean" value="<?= $row['ean']?>">
+    <input type="submit" value="Add to cart" name="add_to_cart">
     </form>
     </div>
+    <?php }?>
 
-    <script>
-        var productArray = <?php echo json_encode($procductArray);?>;
-        productArray.forEach(function(item, index, array) {
-            var count = 0;
-            const newDiv = document.createElement("div");
-            document.body.appendChild(newDiv);
-
-            const newP = document.createElement("p");
-            newP.innerHTML = item
-            newDiv.appendChild(newP);
-
-            var newButton = document.createElement("button");
-            newButton.innerHTML = "+"
-            newDiv.appendChild(newButton);
-            newButton.addEventListener('click', function() {
+    <div class="cart">
+    <?php 
+    $output = "";
     
-                if (count == 0){
-                    const name = document.createElement("p")
-                    name.id = item
-                    name.innerHTML = item;
-            
-                const cart = document.getElementsByClassName("cart")
-                cart[0].appendChild(name)
-                console.log(count)
-                count = count + 1;
-                }else if(count >= 1){
-                  var change = document.getElementById(item)
-                  change.innerHTML =  item +" "+ count;
-                  count = count + 1;
-                }
-            });
-        });
+    $output .= " 
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>EAN</th>
+            <th>Action</th>
+        </tr>
+    ";
 
-        
-        
+    if(!empty($_SESSION['cart'])){
 
-       
-    </script>
+        foreach($_SESSION['cart'] as $key => $value){
+            $output .="
+            <tr>
+                <td>".$value['id']."</td>
+                <td>".$value['name']."</td>
+                <td>".$value['ean']."</td>
+                <td>
+                <a href='producten.php?action=remove&id=".$value['id']."'>
+                    <button>Remove</button>
+                </a>
+                </td>
+           ";
+        }
+        echo $output;
+    }
+     ?>
+    </div>
 </body>
 </html>
 
 <?php  
+if(isset($_GET['action'])){
+    if($_GET['action'] == "remove"){
+       
+    }
+}
+
 mysqli_close($conn);
 ?>
