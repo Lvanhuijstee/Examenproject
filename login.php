@@ -7,7 +7,7 @@
         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
 
             $sql ="SELECT * FROM users WHERE user='$username'";
-
+            
             $result = mysqli_query($conn,$sql);
 
             if(mysqli_num_rows($result) === 1){
