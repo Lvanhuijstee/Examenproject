@@ -1,101 +1,59 @@
-<?php
-session_start();
-
-include("database.php");
-
-if(isset($_POST)){
-    if(isset($_SESSION['cart'])){
-
-        $sessionArray_id = array_column($_SESSION['cart'],"id");
-        if(!in_array($_GET['id'],$sessionArray_id)){
-            $sessionArray = array(
-                'id' => $_GET['id'],
-                "name" => $_POST['name'],
-                "ean" => $_POST['ean']
-            );
-            $_SESSION['cart'][] = $sessionArray;
-        }
-
-    }else{
-        $sessionArray = array(
-            'id' => $_GET['id'],
-            "name" => $_POST['name'],
-            "ean" => $_POST['ean']
-        );
-        $_SESSION['cart'][] = $sessionArray;
-    }
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="producten.css">
+    <link rel="stylesheet" href="productsamenstelling.css">
 </head>
 <body>
-    <?php 
-    $sql ="SELECT * FROM producten";
-    $result = mysqli_query($conn,$sql);
-    while($row = mysqli_fetch_assoc($result)){
-      ?>
-    <div>
-    <form action="producten.php?id=<?= $row['id'] ?>" method="post">
-    <p><?= $row['name'] ?></p>
-    <p><?= $row['ean'] ?></p>
-    <input type="hidden" name="name" value="<?= $row['name']?>">
-    <input type="hidden" name="ean" value="<?= $row['ean']?>">
-    <input type="submit" value="Add to cart" name="add_to_cart">
-    </form>
+<div class="nav">
+      <div class="Name">
+        <div class="logo">
+          <img src="img/mv-vm-letter-logo-vector-29030838.jpg" alt="" />
+        </div>
+        <p>
+          Voedselbank <br />
+          Maaskantje
+        </p>
+      </div>
+      <div class="Menu">
+        <div class="dropMenu">
+          <p id="pakket">
+            Pakket <br />
+            samenstelling
+          </p>
+        </div>
+        <div class="dropMenu">
+          <p>Administratie</p>
+          <div class="dropMenu-Content">
+            <a href="lvs.html">Leverancier overzicht</a>
+            <a href="">Product Overzicht</a>
+            <a href="">Maand overzicht</a>
+            <a href="klanten.html">Klanten overzicht</a>
+          </div>
+        </div>
+        <div class="dropMenu" id="Settings">
+          <p>Account details</p>
+        </div>
+      </div>
     </div>
-    <?php }?>
-
-    <div class="cart">
-    <?php 
-    $output = "";
-    
-    $output .= " 
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>EAN</th>
-            <th>Action</th>
-        </tr>
-    ";
-
-    if(!empty($_SESSION['cart'])){
-
-        foreach($_SESSION['cart'] as $key => $value){
-            $output .="
-            <tr>
-                <td>".$value['id']."</td>
-                <td>".$value['name']."</td>
-                <td>".$value['ean']."</td>
-                <td>
-                <a href='producten.php?action=remove&id=".$value['id']."'>
-                    <button>Remove</button>
-                </a>
-                </td>
-           ";
-        }
-        echo $output;
-    }
-     ?>
-    </div>
+      <div class="pagename">
+        <h2>Pakketsamenstelling</h2>
+      </div>
+      <div class="flexContainer">
+          <div class="productHolder">
+            <div>
+                <img src="img/c1f9c31632323e540af201ef02c5c214.png" alt="">
+            </div>
+          </div>
+      </div>
+      <footer>
+        <div class="footer-container">
+          <div class="footer-left">
+            <p>Copyright © 2023 ROCvF</p>
+          </div>
+        </div>
+      </footer>
 </body>
 </html>
-
-<?php  
-if(isset($_GET['action'])){
-    if($_GET['action'] == "remove"){
-       
-    }
-}
-
-mysqli_close($conn);
-?>

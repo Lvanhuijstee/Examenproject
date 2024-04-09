@@ -1,11 +1,5 @@
 <?php
 include("database.php");
-
-
-
-
-
-
 ?>
 
 <html>
