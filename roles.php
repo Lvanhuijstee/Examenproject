@@ -8,7 +8,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $rol = $_POST['rollen'];
 
-    $sql = "INSERT INTO gebruiker (Voornaam, Gebruikersnaam, Wachtwoord) VALUES ('$gebruiker', '$email', '$wachtwoord')";
+    $sql = "INSERT INTO gebruiker (Voornaam, Email, Wachtwoord) VALUES ('$gebruiker', '$email', '$wachtwoord')";
     mysqli_query($conn, $sql);
 
     $lastInsertedId = mysqli_insert_id($conn);
@@ -70,18 +70,17 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
             <div class="form-group">
                 <?php
-
                 $sqlr = "SELECT * FROM rollen";
                 $resultr = mysqli_query($conn, $sqlr);
-
                 ?>
 
                 <label for="rol">Rollen:</label>
                 <label for="">Rollen</label><br>
                 <select name="rollen">
-                <?php while($row = mysqli_fetch_assoc($resultr)){?>
+                <?php while($row = mysqli_fetch_assoc($resultr)){
+                    if($row['id'] != 4) {?>
                     <option value="<?= $row['id']; ?>"><?= $row['Rolnaam']; ?></option>
-                <?php }?>
+                <?php }}?>
                 </select>
                 <br>
             </div>
