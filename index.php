@@ -1,66 +1,88 @@
+<?php 
+ include("database.php");
+ session_start();
+
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Voedselbank Maaskantje</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" media="screen" href="index.css" />
 </head>
 <body>
-    <form action="index.php" method="post">
-        <label for="">Username:</label><br>
-        <input type="text" name="user"><br>
-        <label for="">Password:</label><br>
-        <input type="password" name="pass"><br>
-        <input type="submit" name="submit" value="register">
-    </form>
-
-    <form action="login.php" method="post">
-        <label for="">Username:</label><br>
-        <input type="text" name="username"><br>
-        <label for="">Password:</label><br>
-        <input type="password" name="password"><br>
-        <input type="submit" name="submit" value="login">
-    </form>
-
-    <form action="productenToevoegen.php" method="post">
-        <label for="">Product name:</label><br>
-        <input type="text" name="productname"><br>
-        <label for="">category:</label><br>
-        <input type="text" name="category"><br>
-        <input type="submit" name="submit" value="create">
-    </form>
-
+  <header>
+    <div class="Name">
+      <div class="logo">
+        <img src="img/mv-vm-letter-logo-vector-29030838.jpg" alt="" />
+      </div>
+      <p> Voedselbank <br/> Maaskantje</p>
+    </div>
+  </header>
+  <main>
+    <section class="GridContainer">
+      <section class="WelcomeBox">
+        <h2>Welkom bij Voedselbank Maaskantje! <br><br> Login om verder te gaan </h2>
+      </section>
+      <section class="SubmitForm">
+        <form action="login.php" method="post" class="signin">
+          <h2>Inloggen</h2>
+          <label for="username">Gebruikersnaam:</label>
+          <input type="text" id="username" name="username" required/>
+          <br/>
+          <br/>
+          <label for="password">Wachtwoord:</label>
+          <input type="password" id="password" name="password" required/>
+          <br/>
+          <br/>
+          <div class="ButtonHolder">
+            <button type="submit">Inloggen</button>
+          </div>
+        </form>
+      </section>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <p>Copyright © 2023 ROCvF</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
 
 
 
+
 <?php
-    include("database.php");
     
 
-   if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $username = filter_input(INPUT_POST, "user", FILTER_SANITIZE_SPECIAL_CHARS);
-    $code = filter_input(INPUT_POST, "pass", FILTER_SANITIZE_SPECIAL_CHARS);
+//    if($_SERVER["REQUEST_METHOD"] == "POST"){
+//     $Voornaam = filter_input(INPUT_POST, "vrn", FILTER_SANITIZE_SPECIAL_CHARS);
+//     $Achternaam = filter_input(INPUT_POST, "achtn", FILTER_SANITIZE_SPECIAL_CHARS);
+//     $Tussenvoegsel = filter_input(INPUT_POST, "tsv", FILTER_SANITIZE_SPECIAL_CHARS);
+//     $Geboortedatum = filter_input(INPUT_POST, "gbd", FILTER_SANITIZE_SPECIAL_CHARS);
+//     $Mobielnummer = filter_input(INPUT_POST, "mbl", FILTER_SANITIZE_SPECIAL_CHARS);
+//     $username = filter_input(INPUT_POST, "user", FILTER_SANITIZE_SPECIAL_CHARS);
+//     $code = filter_input(INPUT_POST, "pass", FILTER_SANITIZE_SPECIAL_CHARS);
 
-    if(empty($username)){
-        echo"please enter a username";
-    }elseif(empty($code)){
-        echo"please enter a password";
-    }else{
-        $hash = password_hash($code, PASSWORD_DEFAULT);
+//         $hash = password_hash($code, PASSWORD_DEFAULT);
 
-        $sql ="INSERT INTO users(user,password)
-        VALUES ('$username', '$hash')";
+//         $sql ="INSERT INTO gebruiker(Voornaam,Achternaam,Tussenvoegsel,Geboortedatum,Mobielnummer,Gebruikersnaam,Wachtwoord)
+//         VALUES ('$Voornaam','$Achternaam','$Tussenvoegsel','$Geboortedatum','$Mobielnummer','$username','$hash')";
     
-        try{
-            mysqli_query($conn, $sql);
-        }
-        catch(mysqli_sql_exception){
-            echo"coudnt register";
-        }
-        }
+//         try{
+//             mysqli_query($conn, $sql);
+//         }
+//         catch(mysqli_sql_exception){
+//             echo"coudnt register";
+//         }
+        
 
-    }
+//     }
     mysqli_close($conn);
 ?>
