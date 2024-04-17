@@ -15,9 +15,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $sqlr = "INSERT INTO rollen_gebruiker (Rollen_id, Gebruiker_id) VALUES ('$rol', '$lastInsertedId') ";
     mysqli_query($conn, $sqlr);
-
-
-    
 }
 
 ?>
@@ -58,29 +55,29 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 <label for="username">Gebruikersnaam:</label>
                 <input name="username" type="text" id="username" placeholder="Enter username">
             </div>
-
-
             <div class="form-group">
                 <label for="email">Email:</label>
                 <input name="email" type="text" id="email" placeholder="Email">
                 <input name="password" type="hidden" id="password" value="rB0yRKq3p7m0ovY">
             </div>
-
-
-
             <div class="form-group">
                 <?php
                 $sqlr = "SELECT * FROM rollen";
                 $resultr = mysqli_query($conn, $sqlr);
                 ?>
-
                 <label for="rol">Rollen:</label>
                 <label for="">Rollen</label><br>
                 <select name="rollen">
+<<<<<<< Updated upstream
                 <?php while($row = mysqli_fetch_assoc($resultr)){
                     if($row['id'] != 4) {?>
                     <option value="<?= $row['id']; ?>"><?= $row['Rolnaam']; ?></option>
                 <?php }}?>
+=======
+                <?php while($row = mysqli_fetch_assoc($resultr)){?>
+                    <option value="<?= $row['id'];?>"><?= $row['Rolnaam'];?></option>
+                <?php }?>
+>>>>>>> Stashed changes
                 </select>
                 <br>
             </div>

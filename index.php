@@ -11,7 +11,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Voedselbank Maaskantje</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" media="screen" href="index.css" />
+  <link rel="stylesheet" media="screen" href="css/index.css" />
 </head>
 <body>
   <header>
