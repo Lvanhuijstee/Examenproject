@@ -1,7 +1,7 @@
 <?php
 include("database.php");
 
-if($_SERVER["REQUEST_METHOD"]=="POST"){
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $gebruiker = $_POST['username'];
     $email = $_POST['email'];
     $wachtwoord = $_POST['password'];
@@ -15,14 +15,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 
     $sqlr = "INSERT INTO rollen_gebruiker (Rollen_id, Gebruiker_id) VALUES ('$rol', '$lastInsertedId') ";
     mysqli_query($conn, $sqlr);
-
-
-    
 }
 
 ?>
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,13 +29,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         body {
             font-family: Arial, sans-serif;
         }
+
         .container {
             width: 300px;
             margin: 0 auto;
         }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         .btn {
             background-color: #007bff;
             color: white;
@@ -45,11 +46,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             border: none;
             cursor: pointer;
         }
+
         .btn:hover {
             background-color: #0056b3;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Gebruiker Registratie</h2>
@@ -77,10 +80,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 <label for="rol">Rollen:</label>
                 <label for="">Rollen</label><br>
                 <select name="rollen">
-                <?php while($row = mysqli_fetch_assoc($resultr)){
-                    if($row['id'] != 4) {?>
-                    <option value="<?= $row['id']; ?>"><?= $row['Rolnaam']; ?></option>
-                <?php }}?>
+                    <?php while ($row = mysqli_fetch_assoc($resultr)) {
+                        if ($row['id'] != 4) { ?>
+                            <option value="<?= $row['id']; ?>"><?= $row['Rolnaam']; ?></option>
+                    <?php }
+                    } ?>
                 </select>
                 <br>
             </div>
@@ -88,9 +92,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         </form>
     </div>
 </body>
+
 </html>
 
 <?php
 mysqli_close($conn);
 ?>
-
