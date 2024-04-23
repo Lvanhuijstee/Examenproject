@@ -31,6 +31,7 @@ showTab(currentTab);
             return false;
         }
         showTab(currentTab);
+        
     }
 
     function fixStepIndicator(n) {
