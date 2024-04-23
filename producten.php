@@ -1,7 +1,10 @@
 <?php 
-session_start();
-include('database.php');
+  session_start();
+  include('database.php');
 
+  if(!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = array();
+}
 ?>
 
 <!DOCTYPE html>
@@ -48,11 +51,20 @@ include('database.php');
         <h2>Pakketsamenstelling</h2>
       </div>
       <div class="flexContainer">
+      <?php 
+    $sql ="SELECT * FROM product";
+    $result = mysqli_query($conn,$sql);
+    while($row = mysqli_fetch_assoc($result)){
+      ?>
           <div class="productHolder">
-            <div>
+            <div class="product">
                 <img src="img/c1f9c31632323e540af201ef02c5c214.png" alt="">
+                  <p><?=$row['Naam']?></p>
+                  <button class="addToCart" data-product-id='<?=$row['id']?>'>Add to cart</button>
             </div>
           </div>
+          <?php }?>
+          <div id="cart" class="cart"></div>
       </div>
       <footer>
         <div class="footer-container">
@@ -60,6 +72,7 @@ include('database.php');
             <p>Copyright © 2023 ROCvF</p>
           </div>
         </div>
+        <script src="producten.js"></script>
       </footer>
 </body>
 </html>
