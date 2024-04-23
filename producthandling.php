@@ -5,6 +5,7 @@ include('database.php');
 if(isset($_POST['id'])){
     $ProductId = $_POST['id'];
     $pakketId = $_SESSION['pakketId'];
+    $ProductNaam = $_POST['Name'];
 
     $sql = "SELECT * FROM pakket_has_product WHERE Pakket_id ='$pakketId'";
     $result = mysqli_query($conn, $sql);
@@ -22,7 +23,7 @@ if(isset($_POST['id'])){
             }
         }
     }else{
-        $sql3 = "INSERT INTO pakket_has_product (Pakket_id,Product_id,Aantal) VALUES ('$pakketId','$ProductId',1)";
+        $sql3 = "INSERT INTO pakket_has_product (Pakket_id,Product_id,Aantal,Productnaam) VALUES ('$pakketId','$ProductId',1,'$ProductNaam')";
         mysqli_query($conn, $sql3);
     }
 }

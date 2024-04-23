@@ -114,6 +114,20 @@ body{
           }
     }
 }
+.cart{
+    width: 200px;
+    height: 200px;
+    background-color: #DE4B0C;
+}
+
+.updateCartName{
+    display: inline;
+    color: white;
+}
+.updateCartAmount{
+    display: inline;
+    color: white;
+}
 
 /*footer start*/
 .footer-container {

@@ -2,9 +2,7 @@
   session_start();
   include('database.php');
 
-  if(!isset($_SESSION['cart'])) {
-    $_SESSION['cart'] = array();
-}
+  $pakketId = $_SESSION['pakketId'];
 ?>
 
 <!DOCTYPE html>
@@ -64,12 +62,20 @@
             </div>
           </div>
           <?php }?>
-          <div id="cart" class="cart"></div>
+          <div id="cart" class="cart">
+          <?php $sql ="SELECT * FROM pakket_has_product WHERE Pakket_id = '$pakketId'";
+          $result = mysqli_query($conn,$sql);
+          while($row = mysqli_fetch_assoc($result)){?>
+          <p class="updateCartName"><?=$row['Productnaam']?></p>
+          <p class="updateCartAmount"> <?=$row['Aantal']?></p>
+          <br> <br>
+          <?php }?>
+          </div>
       </div>
       <footer>
         <div class="footer-container">
           <div class="footer-left">
-            <p>Copyright © 2023 ROCvF</p>
+            <p>Copyright © 2024 ROCvF</p>
           </div>
         </div>
         <script src="producten.js"></script>
