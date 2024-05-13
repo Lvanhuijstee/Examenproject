@@ -12,11 +12,11 @@ document.querySelectorAll('.addToCart').forEach(function (button) {
             id: productId,
             Name: productName
         });
-        postJSON(productData,productName);
+        postJSON(productData, productName);
     });
 });
 
-async function postJSON(Productdata,Productname) {
+async function postJSON(Productdata, Productname) {
     try {
         const response = await fetch('producthandling.php', { // Use await to wait for the fetch to complete
             method: 'POST',
@@ -33,23 +33,43 @@ async function postJSON(Productdata,Productname) {
         console.log(data); // For debugging, you can log the response from the server
         // Update the cart display
 
-        const elements = document.getElementsByClassName('cart');
+        var cart = document.querySelector('#cart');
+        var childElements = cart.querySelectorAll('.updateCartName');
+        var childElementsArray = Array.from(childElements);
+        
+        var childnames = Array()
 
-        if (elements.length == 0) {
-            console.log("The class 'yourClassName' does not have any elements inside.");
-        } else {
-            console.log("The class 'yourClassName' has elements inside.");
+        for(var i = 0; i < childElementsArray.length; i++){
+            childnames.push(childElementsArray[i].innerHTML);
         }
+        
+        
 
-        [...document.getElementsByClassName('updateCartAmount')].forEach(amount => {
-            var productN = meow.previousElementSibling.innerHTML
-            console.log('meow meow meow')
-          if(productN == Productname){
-            var currentAmount = amount.innerHTML
-            let newAmount = parseInt(currentAmount) + 1
-            amount.innerHTML = newAmount
-          }
-        });
+        if (!childnames.includes(Productname) ) {
+            const parent = document.getElementById('cart');
+            const newP = document.createElement("p");
+            var br = document.createElement("br");
+            var br2 = document.createElement("br");
+            newP.className = 'updateCartName';
+            newP.innerHTML = Productname;
+            const newP2 = document.createElement("p");
+            newP2.className = 'updateCartAmount';
+            newP2.innerHTML = " "+'1';
+
+            parent.appendChild(newP)
+            parent.appendChild(newP2)
+            newP2.appendChild(br);
+            newP2.appendChild(br2);
+        } else {
+            [...document.getElementsByClassName('updateCartAmount')].forEach(amount => {
+                var productN = amount.previousElementSibling.innerHTML
+                if (productN == Productname) {
+                    var currentAmount = amount.innerHTML
+                    let newAmount = parseInt(currentAmount) + 1
+                    amount.innerHTML = newAmount
+                }
+            });
+        }
 
     } catch (error) {
         console.error('Error adding to cart:', error);
