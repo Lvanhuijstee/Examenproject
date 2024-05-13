@@ -30,10 +30,13 @@ CREATE TABLE IF NOT EXISTS `adres` (
   PRIMARY KEY (`id`,`Gebruiker_id`),
   KEY `fk_Adres_Gebruiker1_idx` (`Gebruiker_id`),
   CONSTRAINT `fk_Adres_Gebruiker1` FOREIGN KEY (`Gebruiker_id`) REFERENCES `gebruiker` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Dumpen data van tabel maaskantje.adres: ~0 rows (ongeveer)
+-- Dumpen data van tabel maaskantje.adres: ~2 rows (ongeveer)
 DELETE FROM `adres`;
+INSERT INTO `adres` (`id`, `Postcode`, `Huisnummer`, `Straatnaam`, `Land`, `Gebruiker_id`) VALUES
+	(1, '', 0, '', '', 1),
+	(2, '1', 1, '1', '1', 28);
 
 -- Structuur van  tabel maaskantje.allergie wordt geschreven
 CREATE TABLE IF NOT EXISTS `allergie` (
@@ -81,10 +84,14 @@ CREATE TABLE IF NOT EXISTS `gebruiker` (
   `Wachtwoord` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `Email_UNIQUE` (`Email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Dumpen data van tabel maaskantje.gebruiker: ~0 rows (ongeveer)
+-- Dumpen data van tabel maaskantje.gebruiker: ~3 rows (ongeveer)
 DELETE FROM `gebruiker`;
+INSERT INTO `gebruiker` (`id`, `Voornaam`, `Achternaam`, `Tussenvoegsel`, `Geboortedatum`, `Mobielnummer`, `Email`, `Wachtwoord`) VALUES
+	(1, '', '', '', '0000-00-00', 0, '', ''),
+	(22, 'q', 'q', 'q', '2024-04-02', 6, 'test@.com', 'q'),
+	(28, '1', '1', '1', '2024-04-02', 1, 'agargamersinfo@gmail.com', '1');
 
 -- Structuur van  tabel maaskantje.inkomsten wordt geschreven
 CREATE TABLE IF NOT EXISTS `inkomsten` (
@@ -96,10 +103,13 @@ CREATE TABLE IF NOT EXISTS `inkomsten` (
   PRIMARY KEY (`id`,`KlantReg_id`),
   KEY `fk_Inkomsten_KlantReg1_idx` (`KlantReg_id`),
   CONSTRAINT `fk_Inkomsten_KlantReg1` FOREIGN KEY (`KlantReg_id`) REFERENCES `klantreg` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Dumpen data van tabel maaskantje.inkomsten: ~0 rows (ongeveer)
+-- Dumpen data van tabel maaskantje.inkomsten: ~2 rows (ongeveer)
 DELETE FROM `inkomsten`;
+INSERT INTO `inkomsten` (`id`, `Loon`, `Uitkering`, `Kindgebonden`, `KlantReg_id`) VALUES
+	(1, 0, 0, 0, 1),
+	(2, 1, 1, 1, 2);
 
 -- Structuur van  tabel maaskantje.klantreg wordt geschreven
 CREATE TABLE IF NOT EXISTS `klantreg` (
@@ -108,10 +118,13 @@ CREATE TABLE IF NOT EXISTS `klantreg` (
   PRIMARY KEY (`id`,`Gebruiker_id`),
   KEY `fk_KlantReg_Gebruiker1_idx` (`Gebruiker_id`),
   CONSTRAINT `fk_KlantReg_Gebruiker1` FOREIGN KEY (`Gebruiker_id`) REFERENCES `gebruiker` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Dumpen data van tabel maaskantje.klantreg: ~0 rows (ongeveer)
+-- Dumpen data van tabel maaskantje.klantreg: ~2 rows (ongeveer)
 DELETE FROM `klantreg`;
+INSERT INTO `klantreg` (`id`, `Gebruiker_id`) VALUES
+	(1, 1),
+	(2, 28);
 
 -- Structuur van  tabel maaskantje.klantreg_wensen wordt geschreven
 CREATE TABLE IF NOT EXISTS `klantreg_wensen` (
@@ -220,9 +233,9 @@ CREATE TABLE IF NOT EXISTS `rollen` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `Rolnaam` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Dumpen data van tabel maaskantje.rollen: ~0 rows (ongeveer)
+-- Dumpen data van tabel maaskantje.rollen: ~5 rows (ongeveer)
 DELETE FROM `rollen`;
 INSERT INTO `rollen` (`id`, `Rolnaam`) VALUES
 	(1, 'Admin'),
@@ -240,10 +253,13 @@ CREATE TABLE IF NOT EXISTS `rollen_gebruiker` (
   KEY `fk_Rollen_has_Gebruiker_Rollen1_idx` (`Rollen_id`),
   CONSTRAINT `fk_Rollen_has_Gebruiker_Gebruiker1` FOREIGN KEY (`Gebruiker_id`) REFERENCES `gebruiker` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Rollen_has_Gebruiker_Rollen1` FOREIGN KEY (`Rollen_id`) REFERENCES `rollen` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Dumpen data van tabel maaskantje.rollen_gebruiker: ~0 rows (ongeveer)
+-- Dumpen data van tabel maaskantje.rollen_gebruiker: ~2 rows (ongeveer)
 DELETE FROM `rollen_gebruiker`;
+INSERT INTO `rollen_gebruiker` (`Rollen_id`, `Gebruiker_id`) VALUES
+	(5, 1),
+	(5, 28);
 
 -- Structuur van  tabel maaskantje.samenstelling wordt geschreven
 CREATE TABLE IF NOT EXISTS `samenstelling` (
@@ -255,10 +271,13 @@ CREATE TABLE IF NOT EXISTS `samenstelling` (
   PRIMARY KEY (`id`,`KlantReg_id`),
   KEY `fk_Samenstelling_KlantReg1_idx` (`KlantReg_id`),
   CONSTRAINT `fk_Samenstelling_KlantReg1` FOREIGN KEY (`KlantReg_id`) REFERENCES `klantreg` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Dumpen data van tabel maaskantje.samenstelling: ~0 rows (ongeveer)
+-- Dumpen data van tabel maaskantje.samenstelling: ~2 rows (ongeveer)
 DELETE FROM `samenstelling`;
+INSERT INTO `samenstelling` (`id`, `Volwassenen`, `Kinderen`, `Babys`, `KlantReg_id`) VALUES
+	(1, 0, 0, 0, 1),
+	(2, 1, 1, 1, 2);
 
 -- Structuur van  tabel maaskantje.uitgaven wordt geschreven
 CREATE TABLE IF NOT EXISTS `uitgaven` (
@@ -270,10 +289,13 @@ CREATE TABLE IF NOT EXISTS `uitgaven` (
   PRIMARY KEY (`id`,`KlantReg_id`),
   KEY `fk_Uitgaven_KlantReg1_idx` (`KlantReg_id`),
   CONSTRAINT `fk_Uitgaven_KlantReg1` FOREIGN KEY (`KlantReg_id`) REFERENCES `klantreg` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
--- Dumpen data van tabel maaskantje.uitgaven: ~0 rows (ongeveer)
+-- Dumpen data van tabel maaskantje.uitgaven: ~2 rows (ongeveer)
 DELETE FROM `uitgaven`;
+INSERT INTO `uitgaven` (`id`, `Terugkerend`, `Boodschappen`, `Specialiteiten`, `KlantReg_id`) VALUES
+	(1, 0, 0, 0, 1),
+	(2, 1, 1, 11, 2);
 
 -- Structuur van  tabel maaskantje.voorkeur wordt geschreven
 CREATE TABLE IF NOT EXISTS `voorkeur` (
