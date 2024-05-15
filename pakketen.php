@@ -2,7 +2,12 @@
 session_start();
 include('database.php');
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+$sql2 = "SELECT Pakket_id,Productnaam,GROUP_CONCAT(Productnaam SEPARATOR ' ') AS producten
+ FROM pakket_has_product 
+ GROUP BY Pakket_id";
+$result = mysqli_query($conn, $sql2);
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
     $sql = "INSERT INTO pakket (Inpakdatum)
     VALUES (current_timestamp())";
     mysqli_query($conn, $sql);
@@ -58,17 +63,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </div>
-
     <div class="flexcontainer">
        <form action="pakketen.php" method="post">
        <button type="submit">Nieuw pakket</button>
        </form>
-        <div class="pakketcontainer">
-            <div style="width: 200px; height:200px; background-color:white; margin:20px;"></div>
+       <?php while($row = mysqli_fetch_assoc($result)){
+        $products = $row['producten'];
+        $items = explode(' ', $products);?>
+        <div class="pakket">
+            <p><?=$row['Pakket_id']?></p>
+            <p>producten:</p>
+            <ul>
+            <?php foreach($items as $item){?>
+            <li style='color: black;'><?=$item?></li>
+            <?php }?>
+            </ul>
         </div>
-        <div class="pakketcontainer">
-            <div style="width: 200px; height:200px; background-color:white; margin:20px;"></div>
-        </div>
+        <?php }?>
     </div>
     <script src="pakketen.js"></script>
 </body>

@@ -6,7 +6,7 @@
         $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
         $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_SPECIAL_CHARS);
 
-            $sql ="SELECT * FROM gebruiker WHERE Gebruikersnaam ='$username'";
+            $sql ="SELECT * FROM gebruiker WHERE Email ='$username'";
 
 
             $result = mysqli_query($conn,$sql);
@@ -15,7 +15,7 @@
                 $row = mysqli_fetch_assoc($result);
                 if ($password  == $row['Wachtwoord']) {
                     echo "you logged in";
-                    $_SESSION['user'] = $row['Gebruikersnaam'];
+                    $_SESSION['user'] = $row['Email'];
                     header("location: home.php");
                 }else{
                     echo'username or password incorrect';
