@@ -13,8 +13,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $lastInsertedId = mysqli_insert_id($conn);
 
-    $sqlr = "INSERT INTO rollen_gebruiker (Rollen_id, Gebruiker_id) VALUES ('$rol', '$lastInsertedId') ";
-    mysqli_query($conn, $sqlr);
+    switch ($rol) {
+        case '1';
+            $sqlr1 = "INSERT INTO rollen_gebruiker (Rollen_id, Gebruiker_id, Rolnaam) VALUES ('$rol', '$lastInsertedId', 'Admin') ";
+            mysqli_query($conn, $sqlr);
+            break;
+
+        case '2';
+            $sqlr2 = "INSERT INTO rollen_gebruiker (Rollen_id, Gebruiker_id, Rolnaam) VALUES ('$rol', '$lastInsertedId', 'Medwerker') ";
+            mysqli_query($conn, $sqlr);
+            break;
+
+        case '3';
+            $sqlr3 = "INSERT INTO rollen_gebruiker (Rollen_id, Gebruiker_id, Rolnaam) VALUES ('$rol', '$lastInsertedId', 'Vrijwilliger') ";
+            mysqli_query($conn, $sqlr);
+            break;
+
+        case '4';
+            $sqlr4 = "INSERT INTO rollen_gebruiker (Rollen_id, Gebruiker_id, Rolnaam) VALUES ('$rol', '$lastInsertedId', 'Leverancier') ";
+            mysqli_query($conn, $sqlr);
+            break;
+    }
 }
 
 ?>

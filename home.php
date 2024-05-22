@@ -52,7 +52,7 @@ if (!isset($_SESSION)) {
 
     <div class="left">
       <?php
-      $role = Role::from("leverancier");
+      $role = Role::from($_SESSION['role']);
 
       if ($role->allowed("viewProduct")) {
       ?><div class="idk">

@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $LiGebruikerID = mysqli_insert_id($conn);
 
         //Geeft bij registratie de klant rol
-        $sqlRol = "INSERT INTO rollen_gebruiker (Rollen_id, Gebruiker_id) VALUES ('5', '$LiGebruikerID')";
+        $sqlRol = "INSERT INTO rollen_gebruiker (Rollen_id, Gebruiker_id, Rolnaam) VALUES ('5', '$LiGebruikerID', 'Klant')";
         mysqli_query($conn, $sqlRol);
 
         $sqlAdres = "INSERT INTO Adres (Postcode, Huisnummer, Straatnaam, Land, Gebruiker_id) VALUES ('$postcode','$huisnummer','$straatnaam','$land','$LiGebruikerID')";

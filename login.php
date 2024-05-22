@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($password  = $row['Wachtwoord']) {
             echo "you logged in";
             $_SESSION['user'] = $row['Email'];
-            header("location: permissions.php");
+            header("location: home.php");
         } else {
             echo 'Email or Password incorrect';
         }
