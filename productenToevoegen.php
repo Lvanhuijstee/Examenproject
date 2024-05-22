@@ -1,25 +1,48 @@
 <?php
 include("database.php");
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $productname = $_POST["productname"];
-    $category = $_POST["category"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // $newproductname = strtolower($_POST['newProduct']);
+    $amount = $_POST['Amount'];
 
-    $sql ="SELECT * FROM producten WHERE name='$productname'";
-    $result = mysqli_query($conn,$sql);
+    if (isset($_POST['newProduct'])) {
+        $sql = "SELECT * FROM product WHERE Naam ='$newproductname'";
+        $result = mysqli_query($conn,$sql);
 
-    if(mysqli_num_rows($result) === 1){
-        $row = mysqli_fetch_assoc($result);
-        $addProduct = $row['ean'] + 1;
-        $sql ="UPDATE producten SET ean = '$addProduct' WHERE name ='$productname'";
-        mysqli_query($conn, $sql);
-        header("location: producten.php");
+        if(mysqli_num_rows($result) === 0){
+            $EAN = rand(800000,8999999);
+            $sql = "INSERT INTO product(Naam,Aantal,EAN)
+            VALUES('$newproductname','$amount','$EAN')";
+            mysqli_query($conn,$sql);
+            header("location: levering.php");
+        }else{
+            $sql = "UPDATE product SET Aantal = Aantal+'$amount' WHERE Naam ='$newproductname'";
+            mysqli_query($conn,$sql);
+            header("location:levering.php");
+        }
     }else{
-        $sql = "INSERT INTO producten(name,ean,category)
-        VALUES('$productname','1','$category')";
-        mysqli_query($conn, $sql);
-        header("location: producten.php");
-    }
+        $productNaam = $_POST['Naam'];
+
+        $data = array_keys($_POST);
+
+        print_r($data);
+
+        foreach($data as $key){
+
+        
+
+        // $sql = "SELECT * FROM product WHERE Naam='$names'";
+        // $result = mysqli_query($conn, $sql);
+
+
+        // if (mysqli_num_rows($result) === 1) {
+        //     $productId = $_POST['id'];
+        //     $sql = "UPDATE product SET Aantal = Aantal+'$amount' WHERE Naam ='$names'";
+        //     mysqli_query($conn,$sql);
+        //     header("location:levering.php");
+        // }
+
+     }
+   }
 }
 mysqli_close($conn);
-?>

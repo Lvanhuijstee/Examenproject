@@ -1,9 +1,21 @@
 <?php
 session_start();
 include('database.php');
-
+ 
 $userId = 1;
 
+
+
+/**
+ * Determines if a user can perform a given action based on their role.
+ *
+ * This function checks the role of a user against a predefined set of actions that each role can perform.
+ * It returns `true` if the user has permission to perform the specified action, otherwise `false`.
+ *
+ * @param int $userId The ID of the user whose permissions are being checked.
+ * @param string $action The action the user wants to perform (e.g., 'viewProducts', 'editProfile').
+ * @return bool Returns `true` if the user can perform the action, `false` otherwise.
+ */
 function canPerformAction($userId, $action)
 {
     //global $conn;

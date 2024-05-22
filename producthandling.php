@@ -26,4 +26,5 @@ if(isset($_POST['id'])){
         $sql3 = "INSERT INTO pakket_has_product (Pakket_id,Product_id,Aantal,Productnaam) VALUES ('$pakketId','$ProductId',1,'$ProductNaam')";
         mysqli_query($conn, $sql3);
     }
+    
 }
