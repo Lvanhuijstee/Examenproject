@@ -1,6 +1,10 @@
 <?php
-session_start();
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 include('database.php');
+<<<<<<< HEAD
  
 $userId = 1;
 
@@ -17,36 +21,48 @@ $userId = 1;
  * @return bool Returns `true` if the user can perform the action, `false` otherwise.
  */
 function canPerformAction($userId, $action)
+=======
+if (isset($_SESSION['user'])) {
+    echo "Welcome, " . $_SESSION['user'];
+}
+
+$email = $_SESSION['user'];
+$sql = "SELECT id FROM gebruiker WHERE Email = '$email'";
+mysqli_query($conn, $sql);
+
+
+$adminPermissions = array("editUser", "addUser", "viewUser", "deleteUser", "editProduct", "addProduct", "viewProduct", "deleteProduct", "addPakket", "deletePakket");
+$medewerkerPermissions = array("view");
+$vrijwilligerPermissions = array("view");
+$klantPermissions = array("view");
+$leverancierPermissions = array("view");
+
+enum Role: string
+>>>>>>> 5c3b5559bacfe1644d3d0f1c1e602f5ada3c3f95
 {
-    //global $conn;
+    case ADMIN = "admin";
+    case MEDEWERKER = "user";
+    case VRIJWILLIGER = "vrijwilliger";
+    case KLANT = "klant";
+    case LEVERANCIER = "leverancier";
 
-    // Query the user's role
-    // $sql = "SELECT role FROM users WHERE id = $userId";
-    // $result = mysqli_query($conn, $sql);
-    // $userRole = mysqli_fetch_assoc($result)['role'];
+    public function allowed($action)
+    {
+        global $adminPermissions, $medewerkerPermissions, $vrijwilligerPermissions, $klantPermissions, $leverancierPermissions;
 
-    $userRole = "leverancier";
-
-    switch ($userRole) {
-        case 'admin':
-            return true;
-        case 'medewerker':
-            return $action == 'viewProducts' || $action == 'editProducts' || $action == 'createProducts' || $action == 'viewPakket' || $action == 'createPakket' || $action == 'editPakket' || $action == 'viewProfile' || $action == 'editProfile';
-        case 'leverancier':
-            return $action == 'viewProducts' || $action == 'viewProfile' || $action == 'editProfile';
-        case 'vrijwilliger':
-            return $action == 'viewPakket' || $action == 'createPakket' || $action == 'viewProfile' || $action == 'editProfile';
-        case 'klant':
-            return $action == 'viewProfile' || $action == 'editProfile';
-        default:
-            return false;
+        return match ($this) {
+            Role::ADMIN => in_array($action, $adminPermissions),
+            Role::MEDEWERKER => in_array($action, $medewerkerPermissions),
+            Role::VRIJWILLIGER => in_array($action, $vrijwilligerPermissions),
+            Role::KLANT => in_array($action, $klantPermissions),
+            Role::LEVERANCIER => in_array($action, $leverancierPermissions),
+        };
     }
 }
 
-
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -56,13 +72,15 @@ function canPerformAction($userId, $action)
 
 <body>
     <?php
-    if (canPerformAction($userId, 'edit')) {
-        echo '<div class="Granted" style="background-color: Green; width:100px; height:100px;">Access Granted</div>';
-    } else {
-        echo '<div class="Denied" style="background-color: Red; width:100px; height:100px;">Access Denied</div>';
-    }
+    // $role = Role::from("leverancier");
+
+    // if ($role->allowed("edit")) {
+    //     echo '<div class="Granted" style="background-color: Green; width:100px; height:100px;">Access Granted</div>';
+    // } else {
+    //     echo '<div class="Denied" style="background-color: Red; width:100px; height:100px;">Access Denied</div>';
+    // }
     ?>
 
 </body>
 
-</html>
+</html> -->
