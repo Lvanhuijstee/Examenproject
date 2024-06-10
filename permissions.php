@@ -29,11 +29,11 @@ if (isset($_SESSION['user'])) {
     echo "Welcome, " . $_SESSION['user'];
 }
 
-$adminPermissions = array("medewerkerToegang", "editUser", "addUser", "viewUser", "deleteUser", "editProduct", "addProduct", "viewProduct", "deleteProduct", "addPakket", "deletePakket");
-$medewerkerPermissions = array("medewerkerToegang", "viewUser", "addProduct", "viewProduct", "addPakket", "deletePakket");
-$vrijwilligerPermissions = array("medewerkerToegang", "viewUser");
-$klantPermissions = array("viewUser");
-$leverancierPermissions = array("viewUser", "editUser");
+$adminPermissions = array("adminPerms", "medewerkerPerms", "userPerms", "leverancierPerms", "voedselpakketPerms");
+$medewerkerPermissions = array("medewerkerPerms", "userPerms", "voedselpakketPerms");
+$vrijwilligerPermissions = array("voedselpakketPerms", "userPerms");
+$klantPermissions = array("userPerms");
+$leverancierPermissions = array("userPerms", "leverancierPerms");
 
 enum Role: string
 {
