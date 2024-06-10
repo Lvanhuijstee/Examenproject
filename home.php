@@ -3,6 +3,8 @@ include('permissions.php');
 if (!isset($_SESSION)) {
   session_start();
 }
+
+$role = Role::from($_SESSION['role']);
 ?>
 
 <!DOCTYPE html>
@@ -52,8 +54,6 @@ if (!isset($_SESSION)) {
 
     <div class="left">
       <?php
-      $role = Role::from($_SESSION['role']);
-
       if ($role->allowed("viewProduct")) {
       ?><div class="idk">
           <h2>Leverancier overzicht</h2>

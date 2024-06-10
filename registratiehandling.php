@@ -29,8 +29,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $specialiteiten = filter_input(INPUT_POST, "specialiteiten", FILTER_SANITIZE_SPECIAL_CHARS);
 
     //Wensen en Allergie - TODO
-    $allergieID = filter_input(INPUT_POST, "allergie", FILTER_SANITIZE_SPECIAL_CHARS);
-    $voorkeurID = filter_input(INPUT_POST, "voorkeur", FILTER_SANITIZE_SPECIAL_CHARS);
+    $allergieNaam = filter_input(INPUT_POST, "allergie", FILTER_SANITIZE_SPECIAL_CHARS);
+    $voorkeurNaam = filter_input(INPUT_POST, "voorkeur", FILTER_SANITIZE_SPECIAL_CHARS);
 
 
     //Samenstelling
@@ -55,8 +55,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_query($conn, $sqlKlantReg);
         $LiKlantRegID = mysqli_insert_id($conn);
 
-        //$sqlWensen = "INSERT INTO KlantReg_Wensen (KlantReg_id, Allergie_id, Voorkeur_id) VALUES ('$LiKlantRegID','$allergieID','$voorkeurID')";
-        //mysqli_query($conn, $sqlWensen);
+        $sqlAllergie = "INSERT INTO allergie (Allergienaam) VALUES ('$allergieNaam')";
+        mysqli_query($conn, $sqlAllergie);
+        $LiAllergieID = mysqli_insert_id($conn);
+
+        $sqlVoorkeur = "INSERT INTO voorkeur (Voorkeurnaam) VALUES ('$voorkeurNaam')";
+        mysqli_query($conn, $sqlVoorkeur);
+        $LiVoorkeurID = mysqli_insert_id($conn);
+
+        $sqlWensen = "INSERT INTO KlantReg_Wensen (KlantReg_id, Allergie_id, Voorkeur_id) VALUES ('$LiKlantRegID','$LiAllergieID','$LiVoorkeurID')";
+        mysqli_query($conn, $sqlWensen);
 
         $sqlInkomsten = "INSERT INTO Inkomsten (Loon, Uitkering, Kindgebonden, KlantReg_id) VALUES ('$loon','$uitkering','$kindgebonden','$LiKlantRegID')";
         mysqli_query($conn, $sqlInkomsten);

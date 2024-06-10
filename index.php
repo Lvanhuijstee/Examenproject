@@ -36,7 +36,7 @@ if (!isset($_SESSION)) {
       <section class="SubmitForm">
         <form action="login.php" method="post" class="signin">
           <h2>Inloggen</h2>
-          <label for="username">Gebruikersnaam:</label>
+          <label for="username">Email:</label>
           <input type="email" id="email" name="Email" required />
           <br />
           <br />

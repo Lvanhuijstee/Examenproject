@@ -115,7 +115,8 @@ include("database.php");
                 </div>
                 <div class="tab">
                     <h2>Voorkeuren en Wensen:</h2>
-                    <p><input placeholder="Test" name="test"></p>
+                    <p><input placeholder="Allergie..." name="allergie"></p>
+                    <p><input placeholder="Voorkeur..." name="voorkeur"></p>
                 </div>
                 <div class="tab">
                     <h2>Samenstelling:</h2>
