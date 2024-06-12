@@ -2,47 +2,38 @@
 include("database.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // $newproductname = strtolower($_POST['newProduct']);
+    $newproductname;
+    $newproductname = strtolower($_POST['newProduct']);
     $amount = $_POST['Amount'];
 
     if (isset($_POST['newProduct'])) {
         $sql = "SELECT * FROM product WHERE Naam ='$newproductname'";
-        $result = mysqli_query($conn,$sql);
+        $result = mysqli_query($conn, $sql);
 
-        if(mysqli_num_rows($result) === 0){
-            $EAN = rand(800000,8999999);
+        if (mysqli_num_rows($result) === 0) {
+            $EAN = 8 + rand(100000, 999999);
             $sql = "INSERT INTO product(Naam,Aantal,EAN)
             VALUES('$newproductname','$amount','$EAN')";
-            mysqli_query($conn,$sql);
+            mysqli_query($conn, $sql);
             header("location: levering.php");
-        }else{
+        } else {
             $sql = "UPDATE product SET Aantal = Aantal+'$amount' WHERE Naam ='$newproductname'";
-            mysqli_query($conn,$sql);
+            mysqli_query($conn, $sql);
             header("location:levering.php");
         }
-    }else{
-        $productNaam = $_POST['Naam'];
+    } else {
 
-        $data = array_keys($_POST);
+        foreach ($_POST['Naam'] as $index => $names) {
 
-        print_r($data);
-
-        foreach($data as $key){
-
-        
-
-        // $sql = "SELECT * FROM product WHERE Naam='$names'";
-        // $result = mysqli_query($conn, $sql);
-
-
-        // if (mysqli_num_rows($result) === 1) {
-        //     $productId = $_POST['id'];
-        //     $sql = "UPDATE product SET Aantal = Aantal+'$amount' WHERE Naam ='$names'";
-        //     mysqli_query($conn,$sql);
-        //     header("location:levering.php");
-        // }
-
-     }
-   }
+            $sql = "SELECT * FROM product WHERE Naam='$names'";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) === 1){
+                $productId = $_POST['id'];
+                $sql = "UPDATE product SET Aantal = Aantal+'$amount[$index]' WHERE Naam ='$names'";
+                mysqli_query($conn, $sql);
+                header("location:levering.php");
+            }
+        }
+    }
 }
 mysqli_close($conn);

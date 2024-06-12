@@ -17,7 +17,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['pakketId'] = $pakketId;
 
     header("location: producten.php");
-
 }
 ?>
 
@@ -28,6 +27,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/Header.css">
     <link rel="stylesheet" href="css/pakketen.css">
 </head>
 
@@ -38,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 <img src="img/mv-vm-letter-logo-vector-29030838.jpg" alt="" />
             </div>
             <p>
-                Voedselbank <br/>
+                Voedselbank 22<br/>
                 Maaskantje
             </p>
         </div>

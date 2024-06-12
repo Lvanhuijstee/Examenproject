@@ -12,5 +12,4 @@ catch(mysqli_sql_exception){
     echo "not connected";
 }
 
-
 ?>

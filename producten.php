@@ -11,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="css/Header.css">
     <link rel="stylesheet" href="css/producten.css">
 </head>
 <body>
@@ -53,6 +54,12 @@
     $sql ="SELECT * FROM product";
     $result = mysqli_query($conn,$sql);
     while($row = mysqli_fetch_assoc($result)){
+      $productId =$row['id'];
+
+      $sql2 = "SELECT * FROM categorieen_has_product WHERE Product_id =$productId";
+      $result2 = mysqli_query($conn,$sql2);
+
+      $row2 = mysqli_fetch_assoc($result2);
       ?>
           <div class="productHolder">
             <div class="product">
