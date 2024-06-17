@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $achternaam = filter_input(INPUT_POST, "achternaam", FILTER_SANITIZE_SPECIAL_CHARS);
     $geboortedatum = filter_input(INPUT_POST, "geboortedatum", FILTER_SANITIZE_SPECIAL_CHARS);
     $mobielnummer = filter_input(INPUT_POST, "mobielnummer", FILTER_SANITIZE_SPECIAL_CHARS);
-    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_SPECIAL_CHARS);
+    $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
     $wachtwoord = filter_input(INPUT_POST, "wachtwoord", FILTER_SANITIZE_SPECIAL_CHARS);
 
     //Adres
@@ -38,12 +38,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $kinderen = filter_input(INPUT_POST, "kinderen", FILTER_SANITIZE_SPECIAL_CHARS);
     $babys = filter_input(INPUT_POST, "babys", FILTER_SANITIZE_SPECIAL_CHARS);
 
+    //AdminRegistratie
+    $rollenAdmin = $_POST['RollenAdmin'];
+
+    $wachtwoordAdmin = rand(10000, 99999);
+    echo $wachtwoordAdmin;
+    $hashAdmin = password_hash($wachtwoordAdmin, PASSWORD_DEFAULT);
+
+
+    $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
+
+
     try {
-        $sqlGebruiker = "INSERT INTO gebruiker (Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Mobielnummer, Email, Wachtwoord) VALUES ('$voornaam','$tussenvoegsel','$achternaam', '$geboortedatum', '$mobielnummer', '$email', '$wachtwoord')";
+        $sqlGebruiker = "INSERT INTO gebruiker (Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Mobielnummer, Email, Wachtwoord) VALUES ('$voornaam','$tussenvoegsel','$achternaam', '$geboortedatum', '$mobielnummer', '$email', '$hash')";
         mysqli_query($conn, $sqlGebruiker);
         $LiGebruikerID = mysqli_insert_id($conn);
 
-        //Geeft bij registratie de klant rol
         $sqlRol = "INSERT INTO rollen_gebruiker (Rollen_id, Gebruiker_id, Rolnaam) VALUES ('5', '$LiGebruikerID', 'Klant')";
         mysqli_query($conn, $sqlRol);
 
@@ -74,6 +84,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $sqlSamenstelling = "INSERT INTO Samenstelling (Volwassenen, Kinderen, Babys, KlantReg_id) VALUES ('$volwassenen','$kinderen','$babys','$LiKlantRegID')";
         mysqli_query($conn, $sqlSamenstelling);
+
+        //AdminRegistratie
+        $sqlAdminRoles = "SELECT Rolnaam FROM Rollen WHERE ID = '$rollenAdmin'";
+        $resultAdminRoles = mysqli_query($conn, $sqlAdminRoles);
+        $row = mysqli_fetch_assoc($resultAdminRoles);
+        $rowResult = $row['Rolnaam'];
+
+        $sqlAdmin = "UPDATE rollen_gebruiker SET Rolnaam = '$rowResult', Rollen_id = '$rollenAdmin' WHERE Gebruiker_id = '$LiGebruikerID'";
+        mysqli_query($conn, $sqlAdmin);
+
+        $sqlAdminHash = "UPDATE gebruiker SET Wachtwoord = '$hashAdmin' WHERE Gebruiker_id = '$LiGebruikerID'";
     } catch (mysqli_sql_exception $e) {
         if ($e->getCode() == 1062) {
             echo "Error: Dit email adres is al in gebruik!";
@@ -81,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "An error occurred: " . $e->getMessage();
         }
 ?>
-        <!DOCTYPE html>
+        <!-- <!DOCTYPE html>
         <html lang="en">
 
         <head>
@@ -98,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <body>
         </body>
 
-        </html>
+        </html> -->
 <?php
     }
 }
