@@ -1,0 +1,222 @@
+body {
+  font-family: Arial;
+  background-color: rgb(190, 190, 190);
+  background-image: url("../img/Voedselbank.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+
+  /*boxes*/
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body::after {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+/* header begin */
+header {
+  width: 100%;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  background-color: #516781;
+  color: white;
+}
+
+.Name {
+  font-size: 35px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Name > p {
+  margin: 0px;
+}
+
+.logo > img {
+  box-shadow: 5px 6px 2px rgba(0, 0, 0, 0.4);
+  margin: 10px;
+  width: 70px;
+  height: 70px;
+  transition: box-shadow 0.7s;
+}
+
+.logo > img:hover {
+  box-shadow: 8px 9px 1px rgba(0, 0, 0, 0.5);
+}
+
+.Menu {
+  display: flex;
+  justify-content: left;
+}
+
+.dropMenu {
+  margin-left: 70px;
+  height: 60px;
+  width: 270px;
+  background-color: #3f5773;
+  text-align: start;
+  align-self: center;
+  transition: background-color 0.9s;
+}
+
+.dropMenu:hover {
+  background-color: #2a4059;
+}
+
+.dropMenu-Content {
+  margin: 0;
+  display: none;
+}
+
+.dropMenu-Content a {
+  color: black;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropMenu:hover .dropMenu-Content {
+  margin: 0;
+  display: block;
+  width: 270px;
+  background-color: #3f5773;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropMenu-Content a:hover {
+  background-color: #355477;
+}
+
+.dropMenu > p {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 20px;
+}
+
+#pakket {
+  margin-top: 7px;
+}
+
+#Settings {
+  margin-left: 400px;
+  width: 200px;
+}
+/* header end */
+
+/* main start*/
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.box-container {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+}
+
+.box {
+  flex: 1;
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid #516781;
+  background-color: #f4f4f4;
+}
+
+.box-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.button {
+  padding: 8px;
+  margin-bottom: 5px;
+  background-color: #516781;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #31415a;
+}
+
+.account-info,
+.scroll-section {
+  margin-top: 10px;
+  border-top: 1px solid #516781;
+  padding-top: 10px;
+}
+
+.user-data {
+  margin-top: 10px;
+}
+
+.scroll-section {
+  max-height: 200px;
+  overflow-y: scroll;
+  border: 1px solid #516781;
+  padding: 10px;
+}
+
+.message-box {
+  background-color: #c9d8e9;
+  padding: 10px;
+  border: 1px solid #516781;
+  margin-bottom: 10px;
+}
+
+.password-input {
+  display: none;
+}
+
+.BoxMain {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.toggle-password,
+.change-password-button {
+  padding: 8px;
+  background-color: #516781;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.toggle-password:hover,
+.change-password-button:hover {
+  background-color: #31415a;
+}
+/* main end*/
+
+/* footer start */
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #4e6075;
+  color: #fff;
+}

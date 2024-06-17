@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Voedselbank Maaskantje</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" media="screen" href="css/index.css" />
+</head>
+<body>
+  <header>
+    <div class="Name">
+      <div class="logo">
+        <img src="img/mv-vm-letter-logo-vector-29030838.jpg" alt="" />
+      </div>
+      <p>
+        Voedselbank <br />
+        Maaskantje
+      </p>
+    </div>
+  </header>
+  <main>
+    <section class="GridContainer">
+      <section class="WelcomeBox">
+        <h2>Welkom bij Voedselbank Maaskantje! <br><br> Login om verder te gaan </h2>
+      </section>
+      <section class="SubmitForm">
+        <form class="signin">
+          <h2>Inloggen</h2>
+          <label for="username">Gebruikersnaam:</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            required
+          /><br /><br />
+
+          <label for="password">Wachtwoord:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+          /><br /><br />
+
+          <div class="ButtonHolder">
+            <button type="submit">Inloggen</button>
+            <a href="registratie.html"><button type="button" class="buttonregistratie">Registreren</button></a>
+          </div>
+        </form>
+      </section>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-container">
+      <div class="footer-left">
+        <p>Copyright © 2023 ROCvF</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Import and use the validateLogin script -->
+  <script type="module" src="js/validatelogin.js"></script>
+</body>
+</html>

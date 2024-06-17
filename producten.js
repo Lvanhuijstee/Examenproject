@@ -66,7 +66,12 @@ async function postJSON(Productdata, Productname) {
                 if (productN == Productname) {
                     var currentAmount = amount.innerHTML
                     let newAmount = parseInt(currentAmount) + 1
-                    amount.innerHTML = newAmount
+                    amount.innerHTML = " " + newAmount
+                    var br = document.createElement("br");
+                    var br2 = document.createElement("br");
+                    amount.appendChild(br);
+                    amount.appendChild(br2);
+
                 }
             });
         }

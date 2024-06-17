@@ -1,0 +1,40 @@
+.ColapsNav{
+    height: 100vh;
+    width: 60px;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.5s;
+}
+
+a{
+    margin-bottom: 50px;
+}
+
+li{
+    margin-left: 15px;
+    margin-bottom: 10px;
+    list-style: none;
+}
+
+.ColapsNav:hover{
+    width: 100px;
+}
+
+#LogoImg{
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+}
+
+.NavImg{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}

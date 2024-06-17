@@ -1,4 +1,104 @@
+body{
+    margin: 0;
+    background-image: url("../img/background.png")
+}
+
+/* header begin */
+header{
+    width: 100%;
+    height: 100px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    background-color: #516781;
+    color: white;
+}
+
+.Name{
+    font-size: 35px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.Name > p{
+    margin: 0px;
+}
+
+.logo > img{
+    box-shadow: 5px 6px 2px rgba(0, 0, 0,.4);
+    margin: 10px;
+    width: 70px;
+    height: 70px;
+    transition: box-shadow .7s;
+}
+
+.logo > img:hover{
+    box-shadow:8px 9px 1px rgba(0, 0, 0,.5);
+}
+
+.Menu{
+    display: flex;
+    justify-content: left;
+}
+
+.dropMenu{
+    margin-left: 70px;
+    height: 60px;
+    width: 270px;
+    background-color: #3F5773;  
+    text-align:start;
+    align-self: center;
+    transition:background-color .9s;
+}
+
+.dropMenu:hover{
+    background-color: #2a4059;
+
+}
+
+.dropMenu-Content{
+    margin: 0;
+    display: none;
+}
+
+.dropMenu-Content a {
+    color: black;
+    padding: 10px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropMenu:hover .dropMenu-Content {
+    margin: 0;
+    display: block;
+    background-color: #3F5773;
+    width: 270px;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .dropMenu-Content a:hover{
+    background-color:#355477;
+  }
+  
+
+.dropMenu > p{
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 20px;
+}
+
+#pakket{
+    margin-top: 7px;
+}
+
+#Settings{
+    margin-left: 400px;
+    width: 200px;
+}
 /* header end */
+
 .pagename{
     width: 1000px;
     height: 200px;
@@ -38,36 +138,13 @@
           }
     }
 }
-.cart{
-    width: 200px;
-    height: 200px;
-    background-color: #DE4B0C;
-}
 
-.updateCartName{
-    display: inline;
-    color: white;
-}
-.updateCartAmount{
-    display: inline;
-    color: white;
-}
-
-
-.addToCart {
-    transform: translate(120px,-36px);
-   
-}
 /*footer start*/
 .footer-container {
-    position: relative;
-    bottom: 0;
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 15px;
     background-color: #4e6075;
     color: #fff;
   }

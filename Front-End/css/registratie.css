@@ -1,0 +1,110 @@
+body{
+    margin: 0;
+    background-image: url("../img/background.png");
+}
+
+/* header begin */
+header{
+    width: 100%;
+    height: 100px;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    background-color: #516781;
+    color: white;
+    margin-bottom: 100px;
+}
+
+.Name{
+
+    font-size: 35px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+}
+
+.Name > p{
+    margin: 0px;
+}
+
+.logo > img{
+    box-shadow: 5px 6px 2px rgba(0, 0, 0,.4);
+    margin: 10px;
+    width: 70px;
+    height: 70px;
+    transition: box-shadow .7s;
+}
+
+.logo > img:hover{
+    box-shadow:8px 9px 1px rgba(0, 0, 0,.5);
+}
+/* header end */
+
+/*body start*/
+
+.name{
+    width: 100%;
+    text-align: center;
+}
+
+.signupcontainer{
+ display: grid;
+ justify-content: center;
+ position: relative;
+}
+
+.signup{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 600px;
+    height: 600px;
+    background-color: #516781;
+    overflow: auto;
+    >h1{
+        padding-left: 10px;
+    }
+}
+
+hr{
+    border-color: black;
+}
+
+.tab{
+    display: none;
+    >label{
+        padding-left: 10px;
+    }
+    >h3{
+        padding-left: 10px;
+    }
+}
+
+#tab{
+    display: none;
+    >label{
+        padding-left: 10px;
+    }
+}
+
+input {
+    width: 90%;
+    padding: 15px;
+    margin: 5px 0 22px 10px;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+input.invalid {
+    background-color: #ffdddd;
+  }
+
+button{
+    width: 40%;
+    margin: 0px 0px 30px 40px;
+    border: none;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+/*body end*/

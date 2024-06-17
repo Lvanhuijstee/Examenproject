@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Voedselbank Maaskantje</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="css/klanten.css"
+    />
+    <script src="https://unpkg.com/htmx.org@1.9.8"></script>
+  </head>
+  <body>
+    <header>
+      <div class="Name">
+        <div class="logo">
+          <img src="img/mv-vm-letter-logo-vector-29030838.jpg" alt="" />
+        </div>
+        <p>
+          Voedselbank <br/>
+          Maaskantje
+        </p>
+      </div>
+
+      <div class="Menu">
+        <div class="dropMenu">
+          <a href="productsamenstelling.html">
+            Pakket <br/>
+            samenstelling
+          </a>
+        </div>
+        <div class="dropMenu">
+          <p>Administratie</p>
+          <div class="dropMenu-Content">
+            <a href="lvs.html">Leverancier overzicht</a>
+            <a href="producten.html">Product Overzicht</a>
+            <a href="">Maand overzicht</a>
+            <a href="klanten.html">Klanten overzicht</a>
+          </div>
+        </div>
+        <div class="dropMenu" id="Settings">
+          <p onclick="AccountDetails">Account details</p>
+        </div>
+      </div>
+    </header>
+        <div class="GridBox">
+          <h1>Klanten Overzicht</h1>
+
+          <div class="AddBtn">
+            <button onclick="Open()">Add</button>
+          </div>
+
+          <div class="klanten" id="klanten"> 
+            <div class="klantDetailsbBar">
+              <div class="klantDetails"><p>Naam</p></div>
+              <div class="klantDetails"><p>Huisnummer</p></div>
+              <div class="klantDetails"><p>Postcode</p></div>
+              <div class="klantDetails"><p>BSN</p></div>
+            </div>
+          </div>
+
+          <div id="KlantOverzicht">
+            <div class="infoBar">
+              <div><p>Naam</p></div> <div><p>Huisnummer</p></div> <div><p>Postcode</p></div> <div><p>BSN</p></div>
+            </div>
+            <div class="KlantInfo" id="" onclick="Select(0)">
+              <div><p>12312</p></div>
+              <div><p>200</p></div>
+              <div><p>dsa</p></div>
+              <div><p>dsa</p></div>
+            </div>
+            <div class="KlantInfo" id="" onclick="Select(1)">
+              <div><p>675765</p></div>
+              <div><p>600</p></div>
+              <div><p>sdahj</p></div>
+              <div><p>dsad</p></div>
+            </div>
+          </div>
+        </div>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-left">
+          <p>Copyright © 2023 ROCvF</p>
+        </div>
+      </div>
+    </footer>
+    <script src="js/klanten.js"></script>
+  </body>
+</html>
