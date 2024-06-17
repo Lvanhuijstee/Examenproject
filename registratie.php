@@ -33,18 +33,18 @@ include("database.php");
                     <p><input placeholder="Huisnummer" name="huisnummer"></p>
                     <p><input placeholder="Postcode" name="postcode"></p>
                     <p><input placeholder="Land" name="land"></p>
-                    <p><input type="number" placeholder="Mobiel" name="mobielnummer"></p>
+                    <p><input placeholder="Mobiel" name="mobielnummer"></p>
                 </div>
                 <div class="tab">
                     <h2>Inkomsten</h2>
-                    <p><input type="number" placeholder="Loon" name="loon"></p>
-                    <p><input type="number" placeholder="Uitkering" name="uitkering"></p>
-                    <p><input type="number" placeholder="Kindgebonden" name="kindgebonden"></p>
+                    <p><input placeholder="Loon" name="loon"></p>
+                    <p><input placeholder="Uitkering" name="uitkering"></p>
+                    <p><input placeholder="Kindgebonden" name="kindgebonden"></p>
 
                     <h2>Uitgaven</h2>
-                    <p><input type="number" placeholder="Vaste Lasten" name="vastelasten"></p>
-                    <p><input type="number" placeholder="Boodschappen" name="boodschappen"></p>
-                    <p><input type="number" placeholder="Specialiteiten" name="specialiteiten"></p>
+                    <p><input placeholder="Vaste Lasten" name="vastelasten"></p>
+                    <p><input placeholder="Boodschappen" name="boodschappen"></p>
+                    <p><input placeholder="Specialiteiten" name="specialiteiten"></p>
                 </div>
                 <div class="tab">
                     <h2>Voorkeuren en Wensen:</h2>

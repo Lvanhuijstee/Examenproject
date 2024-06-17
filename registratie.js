@@ -1,43 +1,71 @@
-var currentTab = 0;
-showTab(currentTab);
+document.addEventListener('DOMContentLoaded', function () {
+    var currentTab = 0;
+    showTab(currentTab);
 
     function showTab(n) {
-        var x = document.getElementsByClassName("tab");
-        x[n].style.display = "block";
-        if (n == 0) {
-            document.getElementById("prevBtn").style.display = "none";
+        var tabs = document.getElementsByClassName("tab");
+        var prevBtn = document.getElementById("prevBtn");
+        var nextBtn = document.getElementById("nextBtn");
+
+        // Check if the tab exists before trying to display it
+        if (tabs[n]) {
+            tabs[n].style.display = "block";
+
+            // Safely toggle the display of the previous button
+            if (prevBtn) {
+                prevBtn.style.display = n === 0 ? "none" : "inline";
+            }
+
+            // Safely update the next button's text
+            if (nextBtn) {
+                nextBtn.innerHTML = n === (tabs.length - 1) ? "Registreer" : "Volgende";
+            }
+
+            fixStepIndicator(n);
         } else {
-            document.getElementById("prevBtn").style.display = "inline";
+            console.error(`Tab index ${n} does not exist.`);
         }
-        if (n == (x.length - 1)) {
-            document.getElementById("nextBtn").innerHTML = "Registreer";
-        } else {
-            document.getElementById("nextBtn").innerHTML = "Volgende";
-        }
-        fixStepIndicator(n);
     }
 
     function nextPrev(n) {
-        var x = document.getElementsByClassName("tab");
-        if(currentTab < 5){
-            x[currentTab].style.display = "none";
+        var tabs = document.getElementsByClassName("tab");
+        // Safely hide the current tab if it exists
+        if (currentTab < tabs.length) {
+            tabs[currentTab].style.display = "none";
         }
+
         currentTab = currentTab + n;
-        if (currentTab >= x.length) {
-            document.getElementById("Gelukt").innerHTML = "Gelukt!"
-            document.getElementById("nextBtn").style.display = "none";
-            document.getElementById("prevBtn").style.display = "none";
-            document.getElementById("stepDiv").style.display = "none";
+
+        // Check if we've reached the end of the tabs
+        if (currentTab >= tabs.length) {
+            var successMessage = document.getElementById("Gelukt");
+            if (successMessage) {
+                successMessage.innerHTML = "Gelukt!";
+            }
+            if (nextBtn) {
+                nextBtn.style.display = "none";
+            }
+            if (prevBtn) {
+                prevBtn.style.display = "none";
+            }
+            var stepDiv = document.getElementById("stepDiv");
+            if (stepDiv) {
+                stepDiv.style.display = "none";
+            }
             return false;
         }
+
+        // Show the new current tab
         showTab(currentTab);
-        
     }
 
     function fixStepIndicator(n) {
-        var i, x = document.getElementsByClassName("step");
-        for (i = 0; i < x.length; i++) {
-            x[i].className = x[i].className.replace(" active", "");
+        var steps = document.getElementsByClassName("step");
+        for (let i = 0; i < steps.length; i++) {
+            steps[i].className = steps[i].className.replace(" active", "");
         }
-        x[n].className += " active";
+        if (steps[n]) {
+            steps[n].className += " active";
+        }
     }
+});

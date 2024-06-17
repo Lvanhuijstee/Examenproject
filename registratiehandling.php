@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $boodschappen = filter_input(INPUT_POST, "boodschappen", FILTER_SANITIZE_SPECIAL_CHARS);
     $specialiteiten = filter_input(INPUT_POST, "specialiteiten", FILTER_SANITIZE_SPECIAL_CHARS);
 
-    //Wensen en Allergie - TODO
+    //Wensen en Allergie
     $allergieNaam = filter_input(INPUT_POST, "allergie", FILTER_SANITIZE_SPECIAL_CHARS);
     $voorkeurNaam = filter_input(INPUT_POST, "voorkeur", FILTER_SANITIZE_SPECIAL_CHARS);
 
@@ -38,19 +38,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $kinderen = filter_input(INPUT_POST, "kinderen", FILTER_SANITIZE_SPECIAL_CHARS);
     $babys = filter_input(INPUT_POST, "babys", FILTER_SANITIZE_SPECIAL_CHARS);
 
-    //AdminRegistratie
-    $rollenAdmin = $_POST['RollenAdmin'];
 
-    $wachtwoordAdmin = rand(10000, 99999);
-    echo $wachtwoordAdmin;
-    $hashAdmin = password_hash($wachtwoordAdmin, PASSWORD_DEFAULT);
-
-
-    $hash = password_hash($wachtwoord, PASSWORD_DEFAULT);
 
 
     try {
-        $sqlGebruiker = "INSERT INTO gebruiker (Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Mobielnummer, Email, Wachtwoord) VALUES ('$voornaam','$tussenvoegsel','$achternaam', '$geboortedatum', '$mobielnummer', '$email', '$hash')";
+        $sqlGebruiker = "INSERT INTO gebruiker (Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Mobielnummer, Email, Wachtwoord) VALUES ('$voornaam','$tussenvoegsel','$achternaam', '$geboortedatum', '$mobielnummer', '$email', '$wachtwoord')";
         mysqli_query($conn, $sqlGebruiker);
         $LiGebruikerID = mysqli_insert_id($conn);
 
@@ -84,17 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $sqlSamenstelling = "INSERT INTO Samenstelling (Volwassenen, Kinderen, Babys, KlantReg_id) VALUES ('$volwassenen','$kinderen','$babys','$LiKlantRegID')";
         mysqli_query($conn, $sqlSamenstelling);
-
-        //AdminRegistratie
-        $sqlAdminRoles = "SELECT Rolnaam FROM Rollen WHERE ID = '$rollenAdmin'";
-        $resultAdminRoles = mysqli_query($conn, $sqlAdminRoles);
-        $row = mysqli_fetch_assoc($resultAdminRoles);
-        $rowResult = $row['Rolnaam'];
-
-        $sqlAdmin = "UPDATE rollen_gebruiker SET Rolnaam = '$rowResult', Rollen_id = '$rollenAdmin' WHERE Gebruiker_id = '$LiGebruikerID'";
-        mysqli_query($conn, $sqlAdmin);
-
-        $sqlAdminHash = "UPDATE gebruiker SET Wachtwoord = '$hashAdmin' WHERE Gebruiker_id = '$LiGebruikerID'";
     } catch (mysqli_sql_exception $e) {
         if ($e->getCode() == 1062) {
             echo "Error: Dit email adres is al in gebruik!";
