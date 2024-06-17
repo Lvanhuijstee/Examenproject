@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/registratie.css">
+</head>
+<body>
+    <header>
+        <div class="Name">
+            <div class="logo">
+            <img src="img/mv-vm-letter-logo-vector-29030838.jpg" alt="">
+            </div>
+            <p>Voedselbank <br> Maaskantje</p>
+        </div>
+    </header>
+    <div class="signupcontainer">
+        <form  id="signupForm" class="signup" >
+            <h1>registratie</h1>
+
+            <div class="tab"><h3>Naam:</h3>
+                <p><input name="voornaam" id="VN" placeholder="Voornaam" required></p>
+                <p><input name="tussenvoegsels" id="TV" placeholder="Tussenvoegsel" required></p>
+                <p><input name="achternaam" id="AN" placeholder="Achternaam" required></p>
+              </div>
+              
+              <div class="tab"><h3>Contact informatie:</h3>
+                <p><input type="number" name="bsn" id="BSN" placeholder="BSN" required></p>
+                <p><input name="mobielenummer" id="TN" placeholder="Telefoonnummer" required></p>
+              </div>
+              
+              <div class="tab"><h3>Geboorte datum:</h3>
+                <p><input name="geboortedatum" id="D" placeholder="dd" required></p>
+              </div>
+    
+              <div class="tab"><h3>Login informatie:</h3>
+                <p><input name="gebruikersnaam" id="GN" placeholder="Gebruikersnaam" required></p>
+                <p><input name="wachtwoord" id="WW" placeholder="Wachtwoord" required></p>
+              </div>
+
+              <div class="tab"><h3>Woonplaats:</h3>
+                <p><input name="straatnaam" id="prov" placeholder="straatnaam" required></p>
+                <p><input name="stad" id="stad" placeholder="Stad"></p>
+                <p><input name="provincie" id="prov" placeholder="Provincie" required></p>
+                <p><input name="land" id="land" placeholder="Land" required></p>
+                <p><input name="huisnummer" id="HN" placeholder="Huisnummer" required></p>
+                <p><input name="postcode" id="PC" placeholder="Postcode" required></p>
+              </div>
+
+              <div class="tab"><h3>Gezinsammenstelling:</h3>
+                <p><input name="volwassenen" id="VW" placeholder="Volwassenen" required></p>
+                <p><input name="tieners" id="TN" placeholder="Tieners" required></p>
+                <p><input name="kinderen" id="KN" placeholder="Kinderen" required></p>
+                <p><input name="peuters" id="PT" placeholder="Peuters" required></p>
+                <p><input name="babies" id="BB" placeholder="Babies" required></p>
+              </div>
+
+              <div class="tab"><h3>Login informatie:</h3>
+                <p><input name="voedselallergienaam" id="VA" placeholder="voedselallergien" required></p>
+                <p><input name="voorkeurnaam" id="VK" placeholder="voorkeur" required></p>
+              </div>
+            <div class="buttons">
+                <button type="button" onclick="tabChangeP(-1)" id="prvbutton">Vorige</button>
+                <button type="button" onclick="tabChangeN(1)" id="nxtbutton">Volgende</button>
+            </div>
+        </form>
+    </div>
+    <script src="js/registratie.js">
+    </script>
+</body>
+</html>

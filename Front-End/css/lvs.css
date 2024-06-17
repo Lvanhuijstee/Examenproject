@@ -1,0 +1,252 @@
+body {
+  font-family: Arial;
+  background-color: rgb(190, 190, 190);
+  background-image: url("../img/Voedselbank.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+
+  /*boxes*/
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body::after {
+  content: "";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+/* header begin */
+header {
+  width: 100%;
+  height: 100px;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  background-color: #516781;
+  color: white;
+}
+
+.Name {
+  font-size: 35px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Name > p {
+  margin: 0px;
+}
+
+.logo > img {
+  box-shadow: 5px 6px 2px rgba(0, 0, 0, 0.4);
+  margin: 10px;
+  width: 70px;
+  height: 70px;
+  transition: box-shadow 0.7s;
+}
+
+.logo > img:hover {
+  box-shadow: 8px 9px 1px rgba(0, 0, 0, 0.5);
+}
+
+.Menu {
+  display: flex;
+  justify-content: left;
+}
+
+.dropMenu {
+  margin-left: 70px;
+  height: 60px;
+  width: 270px;
+  background-color: #3f5773;
+  text-align: start;
+  align-self: center;
+  transition: background-color 0.9s;
+}
+
+.dropMenu:hover {
+  background-color: #2a4059;
+}
+
+.dropMenu-Content {
+  margin: 0;
+  display: none;
+}
+
+.dropMenu-Content a {
+  color: black;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropMenu:hover .dropMenu-Content {
+  margin: 0;
+  display: block;
+  width: 270px;
+  background-color: #3f5773;
+  position: absolute;
+  z-index: 1;
+}
+
+.dropMenu-Content a:hover {
+  background-color: #355477;
+}
+
+.dropMenu > p {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 20px;
+}
+
+#pakket {
+  margin-top: 7px;
+}
+
+#Settings {
+  margin-left: 400px;
+  width: 200px;
+}
+/* header end */
+
+/*main gedeelte*/
+
+.GridContainer {
+  margin: 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.GridBox {
+  width: 70%;
+  padding: 20px;
+  background-color: hsla(0, 0%, 100%, 0.4);
+  color: white;
+  text-align: center;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 1px solid rgb(0, 0, 0, 0.5);
+  background-color: hsla(0, 0%, 100%, 0.5);
+}
+
+.ButtonHolder {
+  display: flex;
+  justify-content: left;
+}
+
+button[type="button"] {
+  width: 25%;
+  padding: 10px;
+  background-color: #339000;
+  border-radius: 10px;
+  color: white;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #4e6075;
+  border: 2px solid #fff;
+  color: #fff;
+  z-index: 1;
+}
+
+.modal input,
+.modal button {
+  margin-top: 10px;
+}
+
+.grid-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 95%;
+  height: 800px;
+  overflow: auto;
+}
+
+.grid-item {
+  display: flex;
+}
+
+.grid-item-top {
+  background-color: #d3641f;
+  margin-bottom: 4px;
+}
+
+.grid-header {
+  font-weight: bold;
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+}
+
+.grid-row {
+  background-color: #ffffff;
+  color: #000000;
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  height: 40px;
+  margin-right: 2px;
+}
+
+.grid-row2 {
+  background-color: #a7a7a7;
+  color: #000000;
+  flex: 1;
+  text-align: center;
+  padding: 10px;
+  height: 40px;
+  margin-right: 2px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #4e6075;
+  color: #fff;
+}
+
+.SearchBar {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.SearchBar label {
+  margin-right: 10px;
+}
+
+.SearchBar input {
+  width: 200px;
+  padding: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
