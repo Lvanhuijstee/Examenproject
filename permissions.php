@@ -37,15 +37,15 @@ $leverancierPermissions = array("userPerms", "leverancierPerms");
 
 enum Role: string
 {
-    case ADMIN = "Admin";
-    case MEDEWERKER = "Medewerker";
-    case VRIJWILLIGER = "Vrijwilliger";
-    case LEVERANCIER = "Leverancier";
-    case KLANT = "Klant";
+    case Admin = "Admin";
+    case Medewerker = "Medewerker";
+    case Vrijwilliger = "Vrijwilliger";
+    case Leverancier = "Leverancier";
+    case Klant = "Klant";
 
     public static function getAllRoles(): array
     {
-        return [self::ADMIN, self::MEDEWERKER, self::VRIJWILLIGER, self::LEVERANCIER, self::KLANT];
+        return [self::Admin, self::Medewerker, self::Vrijwilliger, self::Leverancier, self::Klant];
     }
 
     public function allowed($action)
@@ -55,11 +55,11 @@ enum Role: string
         foreach (Role::getAllRoles() as $role) {
             if ($role === $this) {
                 return match ($this) {
-                    Role::ADMIN => in_array($action, $adminPermissions),
-                    Role::MEDEWERKER => in_array($action, $medewerkerPermissions),
-                    Role::VRIJWILLIGER => in_array($action, $vrijwilligerPermissions),
-                    Role::LEVERANCIER => in_array($action, $leverancierPermissions),
-                    Role::KLANT => in_array($action, $klantPermissions),
+                    Role::Admin => in_array($action, $adminPermissions),
+                    Role::Medewerker => in_array($action, $medewerkerPermissions),
+                    Role::Vrijwilliger => in_array($action, $vrijwilligerPermissions),
+                    Role::Leverancier => in_array($action, $leverancierPermissions),
+                    Role::Klant => in_array($action, $klantPermissions),
                 };
             }
         }

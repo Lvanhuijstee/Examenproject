@@ -41,18 +41,13 @@ h2 {
     justify-content: space-between;
     width: 100%;
     padding: 10px 0;
-    /* Added padding for spacing */
     background-color: var(--background-color);
-    /* Match the background color for consistency */
     position: relative;
-    /* Changed from fixed to relative */
     bottom: auto;
-    /* Removed fixed positioning */
     left: 0;
     right: 0;
 }
 
-/* Style the buttons */
 button {
     background-color: var(--primary-color-1);
     color: var(--text-color);

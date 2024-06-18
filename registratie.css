@@ -6,15 +6,15 @@
         --primary-color-1: #ff7f03;
         --primary-color-2: #f4f3f1;
     }
-    
+
     :root {
         --text-color: #232d2f;
     }
-    
+
     :root {
         --background-color: #ffffff;
     }
-    
+
     body {
         font-family: 'Rubik', sans-serif;
         display: flex;
@@ -25,11 +25,11 @@
         background-color: var(--background-color);
         color: var(--text-color);
     }
-    
+
     h1 {
-        text-align: center;  
+        text-align: center;
     }
-    
+
     h2 {
         text-align: center;
     }
@@ -37,7 +37,7 @@
     #submitbutton {
         display: none;
     }
-    
+
     input {
         padding: 10px;
         width: 100%;
@@ -45,44 +45,44 @@
         font-family: Raleway;
         border: 1px solid #aaaaaa;
     }
-    
+
     input.invalid {
         background-color: #ffdddd;
     }
-    
+
     .tab {
         display: none;
     }
-    
+
     button:hover {
         opacity: 0.8;
     }
-    
+
     .step {
         height: 15px;
         width: 15px;
         margin: 0 10px;
         padding: 10px;
         background-color: #bbbbbb;
-        border: none;  
+        border: none;
         border-radius: 50%;
         display: inline-block;
         opacity: 0.5;
     }
-    
+
     .step.active {
         opacity: 1;
         background-color: var(--primary-color-1);
     }
-    
+
     .step.finish {
         background-color: #04AA6D;
     }
 
     table {
-    border-style:solid;
-    border-width:2px;
-    border-color:black;
+        border-style: solid;
+        border-width: 2px;
+        border-color: black;
     }
 
     .form-container {
@@ -99,6 +99,7 @@
         align-items: center;
         position: relative;
     }
+
     .button-container {
         padding: 20px;
         display: flex;
@@ -106,7 +107,7 @@
         position: absolute;
         bottom: 10px;
     }
-    
+
     #nextBtn {
         display: flex;
         justify-content: right;
@@ -116,7 +117,7 @@
         background-color: #bbbbbb;
     }
 
-    .stepDiv{
+    .stepDiv {
         display: flex;
         justify-content: center;
         position: absolute;
@@ -129,7 +130,8 @@
         margin-bottom: 5px;
     }
 
-    input[type="text"], select {
+    input[type="text"],
+    select {
         width: 100%;
         padding: 10px;
         font-size: 17px;
@@ -148,6 +150,3 @@
     button:hover {
         background-color: #ed935b;
     }
-       
-
-       
