@@ -26,21 +26,16 @@
         color: var(--text-color);
     }
     
-    #regForm {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        font-family: Raleway;
-        padding: 40px;
-        width: 70%;
-        min-width: 300px;
-    }
-    
     h1 {
         text-align: center;  
+    }
+    
+    h2 {
+        text-align: center;
+    }
+
+    #submitbutton {
+        display: none;
     }
     
     input {
@@ -59,28 +54,15 @@
         display: none;
     }
     
-    button {
-        background-color: #04AA6D;
-        color: #ffffff;
-        border: none;
-        padding: 10px 20px;
-        font-size: 17px;
-        font-family: Raleway;
-        cursor: pointer;
-    }
-    
     button:hover {
         opacity: 0.8;
-    }
-    
-    #prevBtn {
-        background-color: #bbbbbb;
     }
     
     .step {
         height: 15px;
         width: 15px;
-        margin: 0 2px;
+        margin: 0 10px;
+        padding: 10px;
         background-color: #bbbbbb;
         border: none;  
         border-radius: 50%;
@@ -90,6 +72,7 @@
     
     .step.active {
         opacity: 1;
+        background-color: var(--primary-color-1);
     }
     
     .step.finish {
@@ -104,7 +87,7 @@
 
     .form-container {
         width: 350px;
-        height: 600px;
+        height: 700px;
         background-color: var(--primary-color-2);
         border: 0.05px solid var(--primary-color-1);
         border-radius: 20px;
@@ -117,21 +100,41 @@
         position: relative;
     }
     .button-container {
-        width: 100%;
+        padding: 20px;
         display: flex;
         justify-content: center;
         position: absolute;
         bottom: 10px;
     }
+    
+    #nextBtn {
+        display: flex;
+        justify-content: right;
+    }
+
+    #prevBtn {
+        background-color: #bbbbbb;
+    }
+
+    .stepDiv{
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        bottom: 80px;
+        padding: 10px;
+    }
+
     label {
         display: block;
         margin-bottom: 5px;
     }
+
     input[type="text"], select {
-        width: 10%;
+        width: 100%;
         padding: 10px;
-        margin-bottom: 10px;
+        font-size: 17px;
     }
+
     button {
         background-color: var(--primary-color-1);
         color: var(--primary-color-2);
@@ -141,53 +144,10 @@
         font-family: 'Rubik', sans-serif;
         cursor: pointer;
     }
+
     button:hover {
         background-color: #ed935b;
     }
-
-
-
-
-    input[type=range] {
-        width: 100%;
-        height: 25px;
-        background: #d3d3d3;
-        outline: none;
-        opacity: 0.7;
-        -webkit-transition: .2s;
-        transition: opacity .2s;
-       }
        
-       input[type=range]:hover {
-        opacity: 1;
-       }
-       
-       input[type=range]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 25px;
-        height: 25px;
-        background: #4CAF50;
-        cursor: pointer;
-       }
-       
-       input[type=range]::-moz-range-thumb {
-        width: 25px;
-        height: 25px;
-        background: #4CAF50;
-        cursor: pointer;
-       }
 
-       #sliderContainer {
-        display: flex;
-        align-items: center; /* This centers the items vertically */
-       }
        
-       .tab label {
-        margin-right: 10px; /* Adds some space between the label and the slider */
-       }
-       
-       input[type=range] {
-        flex-grow: 1; /* Allows the slider to take up the remaining space */
-        margin-right: 10px; /* Adds some space between the slider and the output */
-       }

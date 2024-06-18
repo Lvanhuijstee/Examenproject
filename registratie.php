@@ -15,7 +15,7 @@ include("database.php");
 
 <body>
     <div class="form-container">
-        <form action="registratiehandling.php" method="post">
+        <form id="regForm" action="registratiehandling.php" method="post">
             <h1 id="Gelukt"></h1>
             <div class="form-group">
                 <div class="tab">
@@ -47,9 +47,36 @@ include("database.php");
                     <p><input placeholder="Specialiteiten" name="specialiteiten"></p>
                 </div>
                 <div class="tab">
-                    <h2>Voorkeuren en Wensen:</h2>
-                    <p><input placeholder="Allergie..." name="allergie"></p>
-                    <p><input placeholder="Voorkeur..." name="voorkeur"></p>
+                    <h2>Allergie</h2>
+                    <select name="allergie">
+                        <?php
+                        $sqlA = "SELECT * FROM allergie";
+                        $resultA = mysqli_query($conn, $sqlA);
+                        while ($row = mysqli_fetch_assoc($resultA)) {
+                        ?>
+                            <option value="<?php echo $row["id"]; ?>">
+                                <?php echo $row["Allergienaam"];
+                                ?>
+                            </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                    <h2>Voorkeur</h2>
+                    <select name="voorkeur">
+                        <?php
+                        $sqlV = "SELECT * FROM voorkeur";
+                        $resultV = mysqli_query($conn, $sqlV);
+                        while ($row = mysqli_fetch_assoc($resultV)) {
+                        ?>
+                        <option value="<?php echo $row["id"]; ?>">
+                            <?php echo $row["Voorkeurnaam"];
+                            ?>
+                        </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
                 </div>
                 <div class="tab">
                     <h2>Samenstelling:</h2>
@@ -57,23 +84,22 @@ include("database.php");
                     <p><input type="number" placeholder="Kinderen" name="kinderen"></p>
                     <p><input type="number" placeholder="Baby's" name="babys"></p>
                 </div>
-                <div style="overflow:auto;">
+                <div>
                     <div class="button-container">
                         <button type="button" id="prevBtn" onclick="nextPrev(-1)">Terug</button>
                         <button type="button" id="nextBtn" onclick="nextPrev(1)">Volgende</button>
                     </div>
                 </div>
-                <div style="text-align:center;margin-top:40px;" id="stepDiv">
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
+                <div id="jsStep">
+                    <div class="stepDiv">
+                        <span class="step"></span>
+                        <span class="step"></span>
+                        <span class="step"></span>
+                        <span class="step"></span>
+                        <span class="step"></span>
+                    </div>
                 </div>
             </div>
-            <br>
-            <button type="submit" id="submittemp">Submit</button>
-
         </form>
         <?php
         mysqli_close($conn);

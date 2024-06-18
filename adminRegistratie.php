@@ -22,7 +22,7 @@ include("database.php");
             <h1 id="Gelukt"></h1>
             <div class="form-group">
                 <div class="tab">
-                    <h2>Naam:</h2>
+                    <h2>Naam</h2>
                     <p><input placeholder="Voornaam" name="voornaam"></p>
                     <p><input placeholder="Tussenvoegsel" name="tussenvoegsel"></p>
                     <p><input placeholder="Achternaam" name="achternaam"></p>
@@ -30,7 +30,7 @@ include("database.php");
                     <p><input type="email" placeholder="Email" name="email"></p>
                 </div>
                 <div class="tab">
-                    <h2>Contact:</h2>
+                    <h2>Contact</h2>
                     <p><input placeholder="Straatnaam" name="straatnaam"></p>
                     <p><input placeholder="Huisnummer" name="huisnummer"></p>
                     <p><input placeholder="Postcode" name="postcode"></p>
@@ -38,7 +38,7 @@ include("database.php");
                     <p><input placeholder="Mobiel Nummer" name="mobielnummer"></p>
                 </div>
                 <div class="tab">
-                    <h2>Welke rol?</h2>
+                    <h2>Welke Rol</h2>
                     <select name="RollenAdmin">
                         <?php
                         $sql = "SELECT * FROM Rollen WHERE NOT Rolnaam = 'Klant'";

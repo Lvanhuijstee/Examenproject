@@ -29,9 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $specialiteiten = filter_input(INPUT_POST, "specialiteiten", FILTER_SANITIZE_SPECIAL_CHARS);
 
     //Wensen en Allergie
-    $allergieNaam = filter_input(INPUT_POST, "allergie", FILTER_SANITIZE_SPECIAL_CHARS);
-    $voorkeurNaam = filter_input(INPUT_POST, "voorkeur", FILTER_SANITIZE_SPECIAL_CHARS);
-
+    $allergieNaam = $_POST['allergie'];
+    $voorkeurNaam = $_POST['voorkeur'];
+    
 
     //Samenstelling
     $volwassenen = filter_input(INPUT_POST, "volwassenen", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -57,11 +57,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_query($conn, $sqlKlantReg);
         $LiKlantRegID = mysqli_insert_id($conn);
 
-        $sqlAllergie = "INSERT INTO allergie (Allergienaam) VALUES ('$allergieNaam')";
+        $sqlGetAllergie = "SELECT Allergienaam FROM allergie WHERE id = '$allergieNaam'";
+        $resultGetAllergie = mysqli_query($conn, $sqlGetAllergie);
+        $rowAllergie = mysqli_fetch_assoc($resultGetAllergie);
+        $rowResultAllergie = $rowAllergie['Allergienaam'];
+
+        $sqlAllergie = "INSERT INTO allergie (Allergienaam) VALUES ('$rowResultAllergie')";
         mysqli_query($conn, $sqlAllergie);
         $LiAllergieID = mysqli_insert_id($conn);
 
-        $sqlVoorkeur = "INSERT INTO voorkeur (Voorkeurnaam) VALUES ('$voorkeurNaam')";
+        $sqlGetVoorkeur = "SELECT Voorkeurnaam FROM voorkeur WHERE id = '$voorkeurNaam'";
+        $resultGetVoorkeur = mysqli_query($conn, $sqlGetVoorkeur);
+        $rowVoorkeur = mysqli_fetch_assoc($resultGetVoorkeur);
+        $rowResultVoorkeur = $rowVoorkeur['Voorkeurnaam'];
+
+        $sqlVoorkeur = "INSERT INTO voorkeur (Voorkeurnaam) VALUES ('$rowResultVoorkeur')";
         mysqli_query($conn, $sqlVoorkeur);
         $LiVoorkeurID = mysqli_insert_id($conn);
 
@@ -83,14 +93,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "An error occurred: " . $e->getMessage();
         }
 ?>
-        <!-- <!DOCTYPE html>
+        <!DOCTYPE html>
         <html lang="en">
 
         <head>
             <meta charset="UTF-8">
             <script type="text/javascript">
-                var delay = 3000;
-                var url = "http://localhost/Examenproject/registratie.php";
+                var delay = 1000;
+                var url = "http://localhost/Examenproject/index.php";
                 setTimeout(function() {
                     window.location.href = url;
                 }, delay);
@@ -100,7 +110,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <body>
         </body>
 
-        </html> -->
+        </html>
 <?php
     }
 }

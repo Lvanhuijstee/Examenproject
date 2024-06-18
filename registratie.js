@@ -1,71 +1,75 @@
+var currentTab = 0;
+var tabs = document.getElementsByClassName("tab");
+var prevBtn = document.getElementById("prevBtn");
+var nextBtn = document.getElementById("nextBtn");
+
 document.addEventListener('DOMContentLoaded', function () {
-    var currentTab = 0;
     showTab(currentTab);
+});
 
     function showTab(n) {
-        var tabs = document.getElementsByClassName("tab");
-        var prevBtn = document.getElementById("prevBtn");
-        var nextBtn = document.getElementById("nextBtn");
+    if (tabs[n]) {
+        tabs[n].style.display = "block";
 
-        // Check if the tab exists before trying to display it
-        if (tabs[n]) {
-            tabs[n].style.display = "block";
+        if (prevBtn) {
+            prevBtn.style.display = n === 0 ? "none" : "inline";
+        }
 
-            // Safely toggle the display of the previous button
-            if (prevBtn) {
-                prevBtn.style.display = n === 0 ? "none" : "inline";
-            }
+        if (nextBtn) {
+            nextBtn.innerHTML = n === (tabs.length)? "Registreer" : "Volgende";
 
-            // Safely update the next button's text
-            if (nextBtn) {
-                nextBtn.innerHTML = n === (tabs.length - 1) ? "Registreer" : "Volgende";
-            }
-
-            fixStepIndicator(n);
+        fixStepIndicator(n);
         } else {
             console.error(`Tab index ${n} does not exist.`);
         }
-    }
+    }}
 
     function nextPrev(n) {
-        var tabs = document.getElementsByClassName("tab");
-        // Safely hide the current tab if it exists
         if (currentTab < tabs.length) {
             tabs[currentTab].style.display = "none";
         }
 
         currentTab = currentTab + n;
 
-        // Check if we've reached the end of the tabs
         if (currentTab >= tabs.length) {
             var successMessage = document.getElementById("Gelukt");
             if (successMessage) {
                 successMessage.innerHTML = "Gelukt!";
             }
             if (nextBtn) {
-                nextBtn.style.display = "none";
+                nextBtn.innerHTML = "Registreer";
+                nextBtn.addEventListener('click', function(event) {
+                    if (this.innerHTML === "Registreer") {
+                        event.preventDefault();
+                        var form = document.getElementById('regForm');
+                        setTimeout(function() {
+                            form.submit();
+                        }, 3000);
+                    }
+                });
             }
             if (prevBtn) {
                 prevBtn.style.display = "none";
             }
-            var stepDiv = document.getElementById("stepDiv");
+            var stepDiv = document.getElementById("jsStep");
             if (stepDiv) {
                 stepDiv.style.display = "none";
             }
             return false;
         }
 
-        // Show the new current tab
         showTab(currentTab);
     }
 
     function fixStepIndicator(n) {
         var steps = document.getElementsByClassName("step");
         for (let i = 0; i < steps.length; i++) {
-            steps[i].className = steps[i].className.replace(" active", "");
+            steps[i].className = steps[i].className.replace(" active", " finish");
         }
-        if (steps[n]) {
+        if (steps[n].className = "step finish") {
+            steps[n].className = steps[n].className.replace(" finish", " active");
+        }
+        if (steps[n] && steps[n].className != "step active") {
             steps[n].className += " active";
         }
     }
-});
