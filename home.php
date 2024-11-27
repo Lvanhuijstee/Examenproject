@@ -62,26 +62,22 @@ if (!isset($_SESSION)) {
       } else {
       }
       ?>
-
       <div class="idk">
         <h2>Voorraadbeheer</h2>
         <img src="img/18634-200.png" alt="">
       </div>
     </div>
-
     <div class="centering">
       <div class="middle">
         <h2>Pakket samenstelling</h2>
         <img src="img/list.png" alt="">
       </div>
-
       <div class="right">
         <h2>Klanten overzicht</h2>
         <img src="img/2715035-200.png" alt="">
         <button>Klant gegevens</button>
       </div>
     </div>
-
   </div>
 </body>
 
