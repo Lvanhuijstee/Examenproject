@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = filter_input(INPUT_POST, "Email", FILTER_SANITIZE_SPECIAL_CHARS);
     $password = filter_input(INPUT_POST, "Wachtwoord", FILTER_SANITIZE_SPECIAL_CHARS);
 
-    $sql = "SELECT * FROM gebruiker WHERE Email ='$email'";
+    $sql = "SELECT * FROM klant WHERE Email ='$email'";
 
 
     $result = mysqli_query($conn, $sql);
