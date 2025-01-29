@@ -43,10 +43,6 @@ body{
     transition:background-color .9s;
 }
 
-.dropMenu:hover{
-    background-color: #2a4059;
-}
-
 .dropMenu-Content{
     margin: 0;
     display: none;
@@ -59,7 +55,7 @@ body{
     display: block;
   }
 
-  .dropMenu:hover .dropMenu-Content {
+  .dropmenu:hover .dropMenu-Content {
     margin: 0;
     display: block;
     background-color: #3F5773;
