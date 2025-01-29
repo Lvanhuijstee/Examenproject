@@ -36,43 +36,17 @@ include("database.php");
                     <p><input placeholder="Mobiel" name="mobielnummer"></p>
                 </div>
                 <div class="tab">
-                    <h2>Inkomsten</h2>
-                    <p><input placeholder="Loon" name="loon"></p>
-                    <p><input placeholder="Uitkering" name="uitkering"></p>
-                    <p><input placeholder="Kindgebonden" name="kindgebonden"></p>
-
-                    <h2>Uitgaven</h2>
-                    <p><input placeholder="Vaste Lasten" name="vastelasten"></p>
-                    <p><input placeholder="Boodschappen" name="boodschappen"></p>
-                    <p><input placeholder="Specialiteiten" name="specialiteiten"></p>
-                </div>
-                <div class="tab">
-                    <h2>Allergie</h2>
-                    <select name="allergie">
+                    <h2>Allergien & Voorkeuren</h2>
+                    <select name="naam">
                         <?php
-                        $sqlA = "SELECT * FROM allergie";
+                        $sqlA = "SELECT * FROM allergien_wensen";
                         $resultA = mysqli_query($conn, $sqlA);
                         while ($row = mysqli_fetch_assoc($resultA)) {
                         ?>
                             <option value="<?php echo $row["id"]; ?>">
-                                <?php echo $row["Allergienaam"];
+                                <?php echo $row["Naam"];
                                 ?>
                             </option>
-                        <?php
-                        }
-                        ?>
-                    </select>
-                    <h2>Voorkeur</h2>
-                    <select name="voorkeur">
-                        <?php
-                        $sqlV = "SELECT * FROM voorkeur";
-                        $resultV = mysqli_query($conn, $sqlV);
-                        while ($row = mysqli_fetch_assoc($resultV)) {
-                        ?>
-                        <option value="<?php echo $row["id"]; ?>">
-                            <?php echo $row["Voorkeurnaam"];
-                            ?>
-                        </option>
                         <?php
                         }
                         ?>
