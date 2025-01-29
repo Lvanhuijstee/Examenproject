@@ -29,40 +29,32 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Document</title>
     <link rel="stylesheet" href="css/Header.css">
     <link rel="stylesheet" href="css/pakketen.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
-
 <body>
-    <div class="nav">
-        <div class="Name">
-            <div class="logo">
-                <img src="img/mv-vm-letter-logo-vector-29030838.jpg" alt="" />
+<header>
+        <div class="menu-container">
+            <div class="left">
+                <a href="home.php" class="logo"><img src="img/mv-vm-letter-logo-vector-29030838.jpg" alt=""></a>
+                <h1>Voedselbank Maaskantje</h1>
             </div>
-            <p>
-                Voedselbank 22<br/>
-                Maaskantje
-            </p>
-        </div>
-        <div class="Menu">
-            <div class="dropMenu">
-                <p id="pakket">
-                    Pakket <br/>
-                    samenstelling
-                </p>
-            </div>
-            <div class="dropMenu">
-                <p>Administratie</p>
-                <div class="dropMenu-Content">
-                    <a href="lvs.html">Leverancier overzicht</a>
-                    <a href="">Product Overzicht</a>
-                    <a href="">Maand overzicht</a>
-                    <a href="klanten.html">Klanten overzicht</a>
+            <div class="center">
+                <a href="pakketen.php">Pakketen samenstelling</a>
+                <a href="levering.php">prodcucten</a>
+                <div class="dropmenu">
+                    <p >Administratie</p>
+                    <div class="dropmenu-content">
+                    <a href="">eerste</a>
+                    <a href="">tweede</a>
+                    <a href="">derde</a>
+                </div>
                 </div>
             </div>
-            <div class="dropMenu" id="Settings">
-                <p>Account details</p>
+            <div class="right">
+                <a href="account.php">Account details</a>
             </div>
         </div>
-    </div>
+    </header>
     <div class="flexcontainer">
        <form action="pakketen.php" method="post">
        <button type="submit">Nieuw pakket</button>
@@ -81,6 +73,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <?php }?>
     </div>
+    <footer class="footer">
+        <div class="footer-item">Copyright © 2023 ROCvF</div>
+    </footer>
     <script src="pakketen.js"></script>
 </body>
 

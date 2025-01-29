@@ -4,8 +4,6 @@ if (!isset($_SESSION)) {
   session_start();
 }
 
-
-
 ?>
 
 <!DOCTYPE html>
@@ -16,16 +14,17 @@ if (!isset($_SESSION)) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Voedselbank Maaskantje</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" media="screen" href="css/Header.css" />
   <link rel="stylesheet" media="screen" href="css/index.css" />
+  <link rel="stylesheet" media="screen" href="css/footer.css" />
 </head>
 
 <body>
-  <header>
-    <div class="Name">
-      <div class="logo">
-        <img src="img/mv-vm-letter-logo-vector-29030838.jpg" alt="" />
-      </div>
-      <p> Voedselbank <br /> Maaskantje</p>
+<header>
+  <div class="menu-container">
+    <div class="left">
+      <a href="#" class="logo"><img src="img/mv-vm-letter-logo-vector-29030838.jpg" alt=""></a>
+        <h1>Voedselbank Maaskantje</h1>
     </div>
   </header>
   <main>
@@ -49,21 +48,13 @@ if (!isset($_SESSION)) {
           </div>
         </form>
       </section>
-    </section>
+    </section> 
   </main>
-  <footer>
-    <div class="footer-container">
-      <div class="footer-left">
-        <p>Copyright © 2023 ROCvF</p>
-      </div>
-    </div>
+  <footer class="footer">
+        <div class="footer-item">Copyright © 2023 ROCvF</div>
   </footer>
 </body>
-
 </html>
-
-
-
 
 <?php
 

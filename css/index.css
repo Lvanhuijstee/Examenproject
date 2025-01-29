@@ -1,67 +1,3 @@
-body {
-    font-family: Arial;
-    background-color: rgb(190, 190, 190);
-    background-image: url("../img/Voedselbank.png");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    margin: 0;
-  }
-  
-  body::after {
-    content: "";
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: -1;
-  }
-  
-  header{
-    width: 100%;
-    height: 100px;
-    display: grid;
-    grid-template-columns: 1fr 4fr;
-    background-color: #516781;S
-  }
-  
-  .Name{
-    font-size: 35px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-  
-  .logo > img{
-    box-shadow: 5px 6px 2px rgba(0, 0, 0,.4);
-    margin: 10px;
-    width: 70px;
-    height: 70px;
-    transition: box-shadow .7s;
-  }
-  
-  .logo > img:hover{
-    box-shadow:8px 9px 1px rgba(0, 0, 0,.5);
-  }
-  
-  .Name > p{
-    margin: 0px;
-  }
-  
-  .header h2 {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    color: #fff;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
   .signup {
     margin: 25px 0;
   }
@@ -77,30 +13,20 @@ body {
   }
   
   .WelcomeBox {
-    
     padding: 10%px;
     padding-left: 1%;
     padding-right: 1%;
-    background-color: hsla(0, 0%, 100%, 0.4);
+    background-color: #0c193f;
+    border: 1px solid #ddd;
     border-radius: 15px;
     color: white;
     text-align: center;
-    margin-bottom: 20px; /* Added margin-bottom to create space between WelcomeBox and SubmitForm */
-  }
-  
-  .footer-container {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    padding: 15px;
-    background-color: #4e6075;
-    color: #fff;
+    margin-bottom: 20px;
   }
   
   /*Login gedeelte*/
   .SubmitForm {
-    background-color: hsla(0, 0%, 100%, 0.4);
+  
     border-radius: 15px;
     color: white;
   }
@@ -111,7 +37,8 @@ body {
   form {
     width: 500px;
     padding: 20px;
-    background-color: hsla(0, 0%, 100%, 0.4);
+    background-color: #0c193f;
+    border: 1px solid #ddd;
     border-radius: 15px;
     color: white;
   }
@@ -142,9 +69,11 @@ body {
   button[type="submit"] {
     width: 25%;
     padding: 10px;
-    background-color: #5085c5;
+    background-color: #0c193f;
     color: white;
     border: none;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
   }

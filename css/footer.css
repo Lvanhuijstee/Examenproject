@@ -1,0 +1,16 @@
+.footer {
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    background-color: #09122C; /* Dark blue color for the footer */
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start; /* Align item to the left */
+    align-items: center; /* Vertically center the content */
+    color: white;
+    width: 100%;
+}
+
+.footer-item {
+    font-size: 16px;
+}

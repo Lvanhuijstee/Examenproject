@@ -13,39 +13,32 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/Header.css">
     <link rel="stylesheet" href="css/producten.css">
+    <link rel="stylesheet" media="screen" href="css/footer.css"/>
 </head>
 <body>
-<div class="nav">
-      <div class="Name">
-        <div class="logo">
-          <img src="img/mv-vm-letter-logo-vector-29030838.jpg" alt="" />
+<header>
+        <div class="menu-container">
+            <div class="left">
+                <a href="home.php" class="logo"><img src="img/mv-vm-letter-logo-vector-29030838.jpg" alt=""></a>
+                <h1>Voedselbank Maaskantje</h1>
+            </div>
+            <div class="center">
+                <a href="pakketen.php">Pakketen samenstelling</a>
+                <a href="levering.php">prodcucten</a>
+                <div class="dropmenu">
+                    <p >Administratie</p>
+                    <div class="dropmenu-content">
+                    <a href="">eerste</a>
+                    <a href="">tweede</a>
+                    <a href="">derde</a>
+                </div>
+                </div>
+            </div>
+            <div class="right">
+                <a href="account.php">Account details</a>
+            </div>
         </div>
-        <p>
-          Voedselbank <br />
-          Maaskantje
-        </p>
-      </div>
-      <div class="Menu">
-        <div class="dropMenu">
-          <p id="pakket">
-            Pakket <br />
-            samenstelling
-          </p>
-        </div>
-        <div class="dropMenu">
-          <p>Administratie</p>
-          <div class="dropMenu-Content">
-            <a href="lvs.html">Leverancier overzicht</a>
-            <a href="">Product Overzicht</a>
-            <a href="">Maand overzicht</a>
-            <a href="klanten.html">Klanten overzicht</a>
-          </div>
-        </div>
-        <div class="dropMenu" id="Settings">
-          <p>Account details</p>
-        </div>
-      </div>
-    </div>
+    </header>
       <div class="pagename">
         <h2>Pakketsamenstelling</h2>
       </div>
@@ -79,13 +72,9 @@
           <?php }?>
           </div>
       </div>
-      <footer>
-        <div class="footer-container">
-          <div class="footer-left">
-            <p>Copyright © 2024 ROCvF</p>
-          </div>
-        </div>
-        <script src="producten.js"></script>
-      </footer>
-</body>
+      <footer class="footer">
+        <div class="footer-item">Copyright © 2023 ROCvF</div>
+    </footer>
+    <script src="producten.js"></script>
+</body> 
 </html>
