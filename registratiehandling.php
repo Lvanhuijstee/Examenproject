@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $land = filter_input(INPUT_POST, "land", FILTER_SANITIZE_SPECIAL_CHARS);
 
     //Wensen en Allergie
-    $naam = $_POST['Naam'];
+    $naam = $_POST['naam'];
 
     try {
         $sqlGebruiker = "INSERT INTO klant (Voornaam, Tussenvoegsel, Achternaam, Geboortedatum, Mobielnummer, Email, Wachtwoord, Volwassenen, Kinderen, Babys) VALUES ('$voornaam','$tussenvoegsel','$achternaam', '$geboortedatum', '$mobielnummer', '$email', '$wachtwoord', '$volwassenen', '$kinderen', '$babys')";
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sqlGetAllergieWensen = "SELECT Naam FROM allergien_wensen";
         $resultGetAllergieWensenn = mysqli_query($conn, $sqlGetAllergieWensen);
         $rowAllergieWensen = mysqli_fetch_assoc($resultGetAllergieWensen);
-        $naam = $rowAllergieWensen['Naam'];
+        $resultGetAllergieWensen = $rowAllergieWensen['Naam'];
 
         $sqlAllergieWensen = "INSERT INTO allergien_wensen (Naam) VALUES ('$naam')";
         mysqli_query($conn, $sqlAllergieWensen);

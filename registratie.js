@@ -45,7 +45,7 @@ function nextPrev(n) {
                     var form = document.getElementById('regForm');
                     setTimeout(function () {
                         form.submit();
-                    }, 30000000);
+                    }, 3000);
                 }
             });
         }

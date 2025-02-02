@@ -1,21 +1,23 @@
 <?php
 // include('permissions.php');
 // if (!isset($_SESSION)) {
-//   session_start();
+//     session_start();
 // }
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Homepage</title>
-  <link rel="stylesheet" media="screen" href="css/Header.css" />
-  <link rel="stylesheet" media="screen" href="css/home.css" />
-  <link rel="stylesheet" media="screen" href="css/footer.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+    <link rel="stylesheet" media="screen" href="css/Header.css" />
+    <link rel="stylesheet" media="screen" href="css/home.css" />
+    <link rel="stylesheet" media="screen" href="css/footer.css" />
 </head>
+
 <body>
-<header>
+    <header>
         <div class="menu-container">
             <div class="left">
                 <a href="home.php" class="logo"><img src="img/mv-vm-letter-logo-vector-29030838.jpg" alt=""></a>
@@ -25,12 +27,12 @@
                 <a href="pakketen.php">Pakketen samenstelling</a>
                 <a href="levering.php">prodcucten</a>
                 <div class="dropmenu">
-                    <p >Administratie</p>
+                    <p>Administratie</p>
                     <div class="dropmenu-content">
-                    <a href="">eerste</a>
-                    <a href="">tweede</a>
-                    <a href="">derde</a>
-                </div>
+                        <a href="">eerste</a>
+                        <a href="">tweede</a>
+                        <a href="">derde</a>
+                    </div>
                 </div>
             </div>
             <div class="right">
@@ -66,4 +68,5 @@
         <div class="footer-item">Copyright © 2023 ROCvF</div>
     </footer>
 </body>
+
 </html>
