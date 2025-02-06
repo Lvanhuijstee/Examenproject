@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="right">
-                <a href="account.php">Account details</a>
+                <a href="index.php">Account details</a>
             </div>
         </div>
     </header>
@@ -45,27 +45,28 @@
             <h2>Voorraardbeheer</h2>
             <div class="voorraad-flex">
                 <div>
-                    <a href="">Voorraad</a>
+                    <a href="levering.php">Voorraad</a>
                 </div>
             </div>
         </div>
         <div class="flex-item">
             <h2>Pakket samenstelling</h2>
             <div class="pakketen-flex">
-                <div><a href="">Pakketen </a></div>
-                <div><a href="">Producten</a></div>
+                <div><a href="pakketen.php">Pakketen </a></div>
+                <div><a href="levering.php">Producten</a></div>
             </div>
         </div>
         <div class="flex-item">
             <h2>Gebruiker overzicht</h2>
             <div class="gebruikers-flex">
-                <div><a href="">Klanten </a></div>
-                <div><a href="">Medewerkers</a></div>
+                <div><a href="registratie.php">Klanten</a></div>
+                <div><a href="registratie.php">Medewerkers</a></div>
+                <div><a href="registratie.php">Leveranciers</a></div>
             </div>
         </div>
     </div>
     <footer class="footer">
-        <div class="footer-item">Copyright © 2023 ROCvF</div>
+        <div class="footer-item">Copyright © 2025 ROCvF</div>
     </footer>
 </body>
 
