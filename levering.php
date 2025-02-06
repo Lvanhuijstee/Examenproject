@@ -43,55 +43,31 @@ $result = mysqli_query($conn, $sql);
   <div class="flex-container">
     <div class="flex-item">
       <h2>Nieuw product</h2>
-      <form action="" method="post">
+      <form action="productenToevoegen.php" method="post">
         <label for="">Product naam:</label>
-        <input type="text">
+        <input type="text" name="newProduct">
         <label for="">Hoeveelheid:</label>
-        <input type="number"> <br>
+        <input type="number" name="Amount"><br>
         <button type="submit">Submit</button>
       </form>
     </div>
 
     <div class="flex-item">
       <h2>bestaande producten</h2>
-      <form action="" method="post">
+      <form action="productenToevoegen.php" method="post">
         <label for="">Product naam:</label>
-        <input type="text">
+        <select id="fruit" name="Naam">
+        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
+            <option value="<?= $row['Naam'] ?>"><?= $row['Naam']?></option>
+            <?php }?>
+        </select>
         <label for="">Hoeveelheid:</label>
-        <input type="number"><br>
+        <input type="number" name="Amount"><br>
         <button type="submit">Submit</button>
       </form>
     </div>
 
   </div>
-
-    <!-- <form action="productenToevoegen.php" method="post" class="levering">
-        <h2>producten geleverd</h2>
-        <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-            <p><?= $row['Naam'] ?></p>
-            <input type="number" name="Amount[]">
-            <input type="hidden" name="id" value="<?= $row['id'] ?>">
-            <input type="hidden" name="Naam[]" value="<?= $row['Naam'] ?>">
-        <?php }?>
-        <br/>
-        <br/>
-        <button type="submit">Submit</button>
-    </form>
-    <form action="productenToevoegen.php" method="post" class="levering">
-        <h2>producten geleverd</h2>
-        <br>
-        <label for="">Productnaam</label>
-        <br>
-        <input type="text" name="newProduct">
-        <br>
-        <label for="">hoeveelheid</label>
-        <br>
-        <input type="number" name="Amount">
-        <br />
-        <br />
-        <button type="submit">Submit</button>
-    </form> -->
-
     <footer class="footer">
         <div class="footer-item">Copyright © 2023 ROCvF</div>
   </footer>

@@ -30,7 +30,16 @@
     font-size: 16px;
     box-sizing: border-box;
     border: 1px solid rgb(0, 0, 0, 0.5);
-    background-color: hsla(0, 0%, 100%, 0.5);
+    background-color: #3E4C61;
+  }
+
+  select {
+    background-color: #3E4C61;
+    width: 80px;
+  }
+  option{
+    background-color: #3E4C61;
+    width: 80px;
   }
   button {
     background-color: #0c193f;

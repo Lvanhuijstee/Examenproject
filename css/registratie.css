@@ -1,0 +1,52 @@
+.flex-container{
+    display: flex;
+    justify-content: center;
+}
+
+.form-page {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: none; /* Hide all pages initially */
+}
+
+
+
+.form-page.active {
+    margin: 20px;
+    padding: 10px;
+    display: block; 
+    background-color: #09122C;
+}
+
+input, select {
+    display: block;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #3E4C61;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #0c193f;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #172e74;
+}
+
+/* Previous and Next buttons */
+button.prev {
+    background-color: #0c193f;
+}
+
+button.prev:hover {
+    background-color: #172e74;
+}
+
