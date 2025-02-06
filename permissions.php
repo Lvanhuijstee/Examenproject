@@ -7,21 +7,21 @@ include('database.php');
 
 
 $email = $_SESSION['user'];
-$sqlUser = "SELECT id FROM gebruiker WHERE Email = '$email'";
+$sqlUser = "SELECT id FROM klant, Medewerker WHERE Email = '$email'";
 $resultUser = mysqli_query($conn, $sqlUser);
 $rowUser = mysqli_fetch_assoc($resultUser);
 $userID = $rowUser['id'];
 
-$sqlRoleSelect = "SELECT * FROM rollen_gebruiker WHERE Gebruiker_id = '$userID'";
+$sqlRoleSelect = "SELECT rollen_id FROM klant, Medewerker WHERE id = '$userID'";
 $roleResult = mysqli_query($conn, $sqlRoleSelect);
 
 $rowRoleResult = mysqli_fetch_assoc($roleResult);
-echo $rowRoleResult['Rollen_id'];
+echo $rowRoleResult['rollen_id'];
 echo '<br>';
-echo $rowRoleResult['Rolnaam'];
+echo $rowRoleResult['Naam'];
 echo '<br>';
 
-$_SESSION['role'] = $rowRoleResult['Rolnaam'];
+$_SESSION['role'] = $rowRoleResult['Naam'];
 
 
 
