@@ -2,19 +2,14 @@
 session_start();
 include('database.php');
 
-$sql2 = "SELECT Pakket_id,Productnaam,GROUP_CONCAT(Productnaam SEPARATOR ' ') AS producten
- FROM pakket_has_product 
- GROUP BY Pakket_id";
-$result = mysqli_query($conn, $sql2);
+$SQL_GET_PAKKET = "SELECT * FROM pakket
+LEFT JOIN pakket_has_product ON pakket.id = pakket_has_product.Pakket_id"; 
+$result = mysqli_query($conn, $SQL_GET_PAKKET);
 
+$SQL_PAKKKET = "SELECT * FROM pakket";
+$result2 = mysqli_query($conn, $SQL_PAKKKET);
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $sql = "INSERT INTO pakket (Inpakdatum)
-    VALUES (current_timestamp())";
-    mysqli_query($conn, $sql);
-
-    $pakketId = mysqli_insert_id($conn);
-
-    $_SESSION['pakketId'] = $pakketId;
+ 
 
     header("location: producten.php");
 }
@@ -55,28 +50,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </header>
-    <div class="flexcontainer">
-       <form action="pakketen.php" method="post">
-       <button type="submit">Nieuw pakket</button>
-       </form>
-       <?php while($row = mysqli_fetch_assoc($result)){
-        $products = $row['producten'];
-        $items = explode(' ', $products);?>
-        <div class="pakket">
-            <p><?=$row['Pakket_id']?></p>
-            <p>producten:</p>
-            <ul>
-            <?php foreach($items as $item){?>
-            <li style='color: black;'><?=$item?></li>
-            <?php }?>
-            </ul>
+    
+    <div class="flex-container">
+        <div class="Item-holder">
+        <?php while($row = mysqli_fetch_assoc($result2)){?>
+        <div class="flex-item">
+        <?php while($row2 = mysqli_fetch_assoc($result)){ ?>   
+        <p><?php echo $row2['Productnaam'];?></p>
+        <?php } ?>
         </div>
-        <?php }?>
+        <?php } ?>
+
+        <button onclick="toggleVisibility()">Nieuw</button>
+        </div>
     </div>
+    <div id="createPakket">
+        
+    </div>
+
     <footer class="footer">
-        <div class="footer-item">Copyright © 2023 ROCvF</div>
+        <div class="footer-item">Copyright © 2025 ROCvF</div>
     </footer>
-    <script src="pakketen.js"></script>
+    <script src="pakket.js"></script>
 </body>
 
 </html>

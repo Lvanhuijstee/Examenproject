@@ -69,7 +69,7 @@ $result = mysqli_query($conn, $sql);
 
   </div>
     <footer class="footer">
-        <div class="footer-item">Copyright © 2023 ROCvF</div>
+        <div class="footer-item">Copyright © 2025 ROCvF</div>
   </footer>
 </body>
 </html>
