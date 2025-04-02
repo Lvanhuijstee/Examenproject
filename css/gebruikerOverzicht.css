@@ -1,0 +1,150 @@
+.section-container {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+    padding: 0 20px;
+    border: 1px solid red;
+    font-size: 18px;
+}
+
+table {
+    width: 85%;
+    border-collapse: collapse;
+}
+
+tr:hover {
+    background-color: coral;
+}
+
+th,
+td {
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+#frontend-table th {
+    font-size: 22px;
+    font-weight: bold;
+    background-color: #04AA6D;
+    color: white;
+}
+
+#email {
+    width: 15%;
+}
+
+button.edit,
+button.delete {
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+#popup {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1a1a2e;
+    /* Dark blue background */
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 400px;
+    /* Adjust the width as needed */
+    border-radius: 10px;
+    color: white;
+    /* White text */
+}
+
+/* Overlay styling */
+#overlay {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    /* Darker overlay */
+    z-index: 999;
+}
+
+/* Close button styling */
+.close-btn {
+    float: right;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    /* White color for the close button */
+}
+
+.close-btn:hover {
+    color: red;
+    /* Red on hover */
+}
+
+/* Form styling */
+#editForm {
+    display: table;
+    width: 100%;
+}
+
+#editForm .form-row {
+    display: table-row;
+}
+
+#editForm label,
+#editForm input {
+    display: table-cell;
+    padding: 8px;
+}
+
+#editForm label {
+    width: 40%;
+    /* Adjust label width as needed */
+    font-weight: bold;
+    text-align: right;
+    padding-right: 10px;
+    /* Spacing between label and input */
+}
+
+#editForm input {
+    width: 60%;
+    /* Adjust input width as needed */
+    background: #2c2c54;
+    /* Darker blue input background */
+    border: 1px solid #444;
+    /* Border color */
+    border-radius: 5px;
+    color: white;
+    /* White text for inputs */
+    outline: none;
+}
+
+#editForm input:focus {
+    border-color: #007BFF;
+    /* Highlight border on focus */
+}
+
+#editForm button {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    background: #007BFF;
+    /* Blue button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#editForm button:hover {
+    background: #0056b3;
+    /* Darker blue on hover */
+}
